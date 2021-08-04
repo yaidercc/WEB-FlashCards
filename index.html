@@ -4,17 +4,128 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>FlashCards</title>
 </head>
 <body>
+    <!-- navegation bar -->
     <header class="barra">
         <h1>FlashCards</h1>
-
+        <ul>
+            <li>
+                <a href="#" class="salir">
+                    <img src="img/icon-men.png" alt="men icon">
+                    <span>yaider c.</span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#" class="leave">salir</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </header>
-    <section></section>
-    <main></main>
-    <section></section>
-    <footer></footer>
+    <!-- section managment flahscards -->
+    <section>
+        <div>
+            <a href="#">
+                <span>temarios</span>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+            </a>
+            <div>
+                <div>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div>
+                    <div>
+                        <ion-icon name="search-outline"></ion-icon>
+                        <input type="search" name="search" >
+                    </div>
+                    <a href="#">
+                        <ion-icon name="add-outline"></ion-icon>
+                        <span>Nuevo</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <h2>El Principito</h2>
+        <div>
+            <a href="#">
+                <ion-icon name="add-outline"></ion-icon>
+                <span>nueva flashcard</span>
+            </a>
+            <div>
+                <input type="search" name="search" >
+                <ion-icon name="search-outline"></ion-icon>
+            </div>
+        </div>
+    </section>
+    <!-- flashcards -->
+    <main>
+        <div>
+            <div>
+                <div>
+                    <a href="#">
+                        <ion-icon name="color-palette-outline"></ion-icon>
+                    </a>
+                    <a href="#">ver</a>
+                    <a href="#">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </a>
+                </div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <a href="#">
+            <ion-icon name="trash-outline"></ion-icon>
+            <span>eliminar temario</span>
+        </a>
+    </main>
+    <!-- definition flashcards -->
+    <section>
+        <img src="img/flashcards.png" alt="">
+        <div>
+            <h3>que son las img/flashcards.png</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quisquam totam ad, sunt excepturi repudiandae incidunt voluptatem illum repellat optio necessitatibus temporibus facere sapiente hic in iusto voluptatum quas architecto.
+            </p>
+            <a href="#">leer mas...</a>
+        </div>
+    </section>
+    <footer>
+        <p></p>
+        <ul>
+            <li>
+                <a href="#">
+                <ion-icon name="briefcase-outline"></ion-icon> <span>portafolio</span>
+            </a>
+            </li>
+            <li>
+                <a href="#">
+                    <ion-icon name="logo-github"></ion-icon>
+                    <span>repositorio</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                    <span>linkedin</span>
+                </a>
+            </li>
+        </ul>
+    </footer>
+    <!-- modal window -->
 </body>
 </html>
