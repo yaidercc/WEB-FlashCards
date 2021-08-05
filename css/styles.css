@@ -1,3 +1,77 @@
+/* **** globales **** */
+body {
+  font-family: "Poppins", sans-serif;
+}
 
+a {
+  color: #1C1C1C;
+}
+
+/* **** utilities **** */
+.container {
+  max-width: 120rem;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mg-top {
+  margin-top: 4rem;
+}
+
+/* **** header **** */
+.bar {
+  box-shadow: 0px 7px 13px rgba(28, 28, 28, 0.2);
+}
+
+.header_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_content h1 {
+  font-family: "Lobster", cursive;
+  font-size: calc(1.3em + 1.3vw);
+}
+.header_content .btn_profile a {
+  display: flex;
+  align-items: center;
+}
+.header_content .profile > li {
+  position: relative;
+}
+.header_content .submenu_profile {
+  display: none;
+  position: absolute;
+  width: 120px;
+  padding: 1rem 2rem;
+  text-align: center;
+  background-color: #fff;
+  transition: 0.4s all ease-in-out;
+}
+
+.submenu_profile {
+  right: -7px;
+}
+.submenu_profile li a {
+  display: block;
+  text-align: center;
+  font-weight: 500;
+  color: #F33535;
+}
+.submenu_profile li a span {
+  margin-left: 1.2rem;
+}
+
+.btn_profile > a img {
+  height: 4rem;
+}
+.btn_profile > a span {
+  color: #1C1C1C;
+  font-weight: 700;
+}
+.btn_profile:hover > .submenu_profile {
+  display: block;
+}
 
 /*# sourceMappingURL=styles.css.map */

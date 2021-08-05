@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -17,24 +17,30 @@
 </head>
 <body>
     <!-- navegation bar -->
-    <header class="barra">
-        <h1>FlashCards</h1>
-        <ul>
-            <li>
-                <a href="#" class="salir">
-                    <img src="img/icon-men.png" alt="men icon">
-                    <span>yaider c.</span>
-                </a>
-                <ul>
-                    <li>
-                        <a href="#" class="leave">salir</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+    <header class="bar ">
+        <div class="header_content container">
+            <h1>FlashCards</h1>
+            <ul class="profile">
+                <li class="btn_profile" >
+                    <a href="#" >
+                        <img src="img/icon-men.png" alt="men icon">
+                        <span>yaider c.</span>
+                    </a>
+                    <ul class="submenu_profile">
+                        <li>
+                            <a href="#" class="leave">
+                                <ion-icon name="power-outline"></ion-icon>
+                                <span>salir</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
     </header>
     <!-- section managment flahscards -->
-    <section>
+    <section class="mg-top container">
         <div>
             <a href="#">
                 <span>temarios</span>
@@ -73,7 +79,7 @@
         </div>
     </section>
     <!-- flashcards -->
-    <main>
+    <main class="mg-top container">
         <div>
             <div>
                 <div>
@@ -94,10 +100,10 @@
         </a>
     </main>
     <!-- definition flashcards -->
-    <section>
+    <section class="mg-top container">
         <img src="img/flashcards.png" alt="">
         <div>
-            <h3>que son las img/flashcards.png</h3>
+            <h3>que son las flashcards</h3>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quisquam totam ad, sunt excepturi repudiandae incidunt voluptatem illum repellat optio necessitatibus temporibus facere sapiente hic in iusto voluptatum quas architecto.
             </p>
@@ -105,7 +111,7 @@
         </div>
     </section>
     <footer>
-        <p></p>
+        <p>&copy; Todos Los Derechos Reservados</p>
         <ul>
             <li>
                 <a href="#">
@@ -127,5 +133,49 @@
         </ul>
     </footer>
     <!-- modal window -->
+    <div>
+        <!-- modal agregar card -->
+        <div>
+            <div>
+                <h2>agregar flahscard</h2>
+                <a href="#" class="close">X</a>
+            </div>
+            <div>
+                <form action="#">
+                    <div>
+                        <label for="question"></label>
+                        <input type="text" id="question" placeholder="EJ: Planeta Mas Grande Del Sistema Solar">
+                    </div>
+                    <div>
+                        <label for="answer"></label>
+                        <textarea type="text" id="answer" placeholder="EJ: jupiter"></textarea>
+                    </div>
+                    <div>
+                        <ion-icon name="save-outline"></ion-icon>
+                        <input type="submit" value="guardar">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- modal agregar temario -->
+        <div>
+            <div>
+                <h2>agregar temario</h2>
+                <a href="#" class="close">X</a>
+            </div>
+            <div>
+                <form action="">
+                    <div>
+                        <label for="answer"></label>
+                        <textarea type="text" id="answer" placeholder="EJ: jupiter"></textarea>
+                    </div>
+                </form>
+                <div>
+                    <ion-icon name="save-outline"></ion-icon>
+                    <input type="submit" value="guardar">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

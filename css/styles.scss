@@ -1,0 +1,98 @@
+@import "components/_colors.scss";
+@import "components/_fonts.scss";
+@import "components/functions";
+
+/* **** globales **** */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    color: $blackColor;
+}
+
+/* **** utilities **** */
+.container {
+    max-width: 120rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.mg-top {
+    margin-top: 4rem;
+}
+
+.btn {}
+
+.btn-primary {}
+
+/* **** header **** */
+.bar {
+    box-shadow: 0px 7px 13px $shadow;
+}
+
+.header_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        font-family: $logoFont;
+        font-size: calc(1.3em + 1.3vw)
+    }
+
+    .btn_profile a {
+        display: flex;
+        align-items: center;
+    }
+
+    .profile>li {
+        position: relative;
+    }
+
+    .submenu_profile {
+        display: none;
+        position: absolute;
+        width: 120px;
+        padding: 1rem 2rem;
+        text-align: center;
+        background-color: #fff;
+        transition: .4s all ease-in-out;
+    }
+}
+
+.submenu_profile {
+    right: -7px;
+
+    li a {
+        display: block;
+        text-align: center;
+        font-weight: 500;
+        color: $deleteColor;
+
+        span {
+            margin-left: 1.2rem;
+        }
+    }
+}
+
+.btn_profile {
+    &>a {
+        img {
+            height: 4rem;
+        }
+
+        span {
+            color: $blackColor;
+            font-weight: 700;
+        }
+    }
+
+    &:hover>.submenu_profile {
+        display: block;
+    }
+}
+
+@media screen and (max-width:768px) {}
