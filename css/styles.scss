@@ -11,13 +11,30 @@ a {
     color: $blackColor;
 }
 
+input {
+    outline: none;
+    font-family: inherit;
+    height: 3.4rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+input:not(input[type="submit"]) {
+    padding: 0 2rem;
+}
+
+[name*="trash"] {
+    color: red;
+}
+
 /* **** utilities **** */
 .container {
     max-width: 120rem;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .mg-top {
@@ -27,6 +44,23 @@ a {
 .btn {}
 
 .btn-primary {}
+
+.input_search {
+    position: relative;
+    width: 100%;
+
+    ion-icon {
+        position: absolute;
+        left: 185px;
+        top: 8px;
+        margin: auto;
+    }
+
+    input {
+        font-size: 1.3rem;
+    }
+}
+
 
 /* **** header **** */
 .bar {
@@ -95,4 +129,99 @@ a {
     }
 }
 
-@media screen and (max-width:768px) {}
+/* **** flashcard managment **** */
+.container_list-topics {
+    position: relative;
+}
+
+@media (min-width:768px) {
+    .container_list-topics {
+        width: 30rem;
+    }
+}
+
+.btn_topics {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    outline: 1px solid $blackColor;
+    padding: 1.2rem 2rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    span {
+        margin-right: 1rem;
+    }
+
+    &:hover {
+        transition: .2s box-shadow ease-in-out;
+        box-shadow: 3px 3px 5px rgba($color: $blackColor, $alpha: 0.3);
+    }
+}
+
+.input_search {
+    ion-icon {}
+
+    input {
+        width: 100%;
+    }
+}
+
+.topics_container {
+    .list_topics {
+        padding: 0;
+    }
+}
+
+.list_topics {
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        margin-bottom: .5rem;
+
+    }
+}
+
+.topic {
+    cursor: pointer;
+
+    &.active,
+    &:hover {
+        span {
+            color: $blackColor;
+            font-weight: 400;
+        }
+
+        transition: .2s box-shadow ease-in-out;
+        box-shadow: 3px 3px 5px rgba($color: $blackColor, $alpha: 0.3);
+    }
+
+    span {
+        color: #707070;
+    }
+}
+
+@media (min-width:768px) {
+    .btn_topics {
+        width: 30rem;
+    }
+}
+
+.container_new-topic {
+    box-shadow: 0px -1px 1px rgba($color: $blackColor, $alpha: 0.3);
+    padding: 2rem;
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+        display: flex;
+        align-items: center;
+
+        span {
+            margin-left: 1rem;
+        }
+    }
+
+}
