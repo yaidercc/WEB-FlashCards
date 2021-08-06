@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.2rem 2rem;
+  padding: 1.2rem 2.5rem;
   margin-bottom: 2rem;
   font-weight: 600;
 }
@@ -13,7 +13,11 @@
 }
 
 .btn_primary.btn {
-  background-color: #EEB600;
+  transition: 0.3s all ease-in-out;
+}
+
+.btn_primary.btn:hover {
+  box-shadow: 9px 9px 15px rgba(238, 182, 0, 0.4);
 }
 
 /* **** globales **** */
@@ -31,7 +35,7 @@ ul {
 
 input {
   outline: none;
-  height: 3.4rem;
+  height: 4rem;
   font-family: inherit;
   text-transform: capitalize;
 }
@@ -41,6 +45,7 @@ input:focus {
 
 input:not(input[type=submit]) {
   padding: 0 2rem;
+  font-size: 1.3rem;
 }
 
 [name*=trash] {
@@ -66,12 +71,12 @@ input:not(input[type=submit]) {
 .input_search ion-icon {
   position: absolute;
   right: 0;
-  top: 8px;
+  top: 10px;
   margin: auto;
   padding: 0 2rem;
 }
 .input_search input {
-  font-size: 1.3rem;
+  width: 100%;
 }
 
 /* **** header **** */
@@ -170,10 +175,6 @@ input:not(input[type=submit]) {
   transition: 0.2s box-shadow ease-in-out;
 }
 
-.input_search input {
-  width: 100%;
-}
-
 .topics_container {
   overflow-y: auto;
   height: 15rem;
@@ -244,7 +245,22 @@ input:not(input[type=submit]) {
 #topic_title {
   text-align: center;
   margin: 2rem 0;
-  font-size: calc(1em + 1vw);
+  font-size: calc(1.3em + 1.3vw);
+}
+
+.btn {
+  background-color: #EEB600;
+}
+
+@media (min-width: 768px) {
+  .flashcard_customize {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .flashcard_customize .input_search {
+    width: 25rem;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

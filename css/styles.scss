@@ -20,7 +20,7 @@ ul {
 
 input {
     outline: none;
-    height: 3.4rem;
+    height: 4rem;
     font-family: inherit;
     text-transform: capitalize;
 
@@ -31,6 +31,7 @@ input {
 
 input:not(input[type="submit"]) {
     padding: 0 2rem;
+    font-size: 1.3rem;
 }
 
 [name*="trash"] {
@@ -49,9 +50,6 @@ input:not(input[type="submit"]) {
     margin-top: 4rem;
 }
 
-.btn {}
-
-.btn-primary {}
 
 .input_search {
     position: relative;
@@ -60,14 +58,15 @@ input:not(input[type="submit"]) {
     ion-icon {
         position: absolute;
         right: 0;
-        top: 8px;
+        top: 10px;
         margin: auto;
         padding: 0 2rem;
     }
 
     input {
-        font-size: 1.3rem;
+        width: 100%;
     }
+
 }
 
 
@@ -184,13 +183,7 @@ input:not(input[type="submit"]) {
     }
 }
 
-.input_search {
-    ion-icon {}
 
-    input {
-        width: 100%;
-    }
-}
 
 .topics_container {
     overflow-y: auto;
@@ -278,9 +271,25 @@ input:not(input[type="submit"]) {
 #topic_title {
     text-align: center;
     margin: 2rem 0;
-    font-size: calc(1em + 1vw);
+    font-size: calc(1.3em + 1.3vw);
 }
 
 .btn {
     @extend %btn;
+    background-color: $principalColor;
+}
+
+
+@media (min-width:768px) {
+    .flashcard_customize {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .input_search {
+            width: 25rem;
+
+        }
+    }
+
 }
