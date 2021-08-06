@@ -465,3 +465,57 @@ input:not(input[type="submit"]) {
         justify-content: flex-end;
     }
 }
+
+/* **** definition flashcards **** */
+
+
+
+
+
+.definition_flashcard {
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .definition a:hover {
+        color: $principalColorHover;
+        transition: 0.4s all ease-in-out;
+    }
+}
+
+.definition {
+    margin-bottom: 3rem;
+
+    a {
+        color: $principalColor;
+        font-weight: 600;
+    }
+
+    p {
+        line-height: 2;
+    }
+
+    p,
+    h3 {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .definition_flashcard {
+        display: flex;
+        align-items: center;
+
+        img {
+            height: 40rem;
+        }
+    }
+
+}
+
+
+
+/* **** footer **** */
+/* **** modal **** */

@@ -391,5 +391,42 @@ input:not(input[type=submit]) {
     justify-content: flex-end;
   }
 }
+/* **** definition flashcards **** */
+.definition_flashcard img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.definition_flashcard .definition a:hover {
+  color: #FBC93F;
+  transition: 0.4s all ease-in-out;
+}
+
+.definition {
+  margin-bottom: 3rem;
+}
+.definition a {
+  color: #EEB600;
+  font-weight: 600;
+}
+.definition p {
+  line-height: 2;
+}
+.definition p,
+.definition h3 {
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .definition_flashcard {
+    display: flex;
+    align-items: center;
+  }
+  .definition_flashcard img {
+    height: 40rem;
+  }
+}
+/* **** footer **** */
+/* **** modal **** */
 
 /*# sourceMappingURL=styles.css.map */
