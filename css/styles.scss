@@ -324,22 +324,71 @@ input:not(input[type="submit"]) {
 }
 
 .flashcard {
+    position: relative;
+    height: 35rem;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+
     .face {
-        height: 35rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 30rem;
         width: 100%;
         background-color: $blackColor;
         color: #ffff;
+
+
     }
 
     .flashcards_settings {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
 
+    &.rotate {
+        transform: rotateY(180deg);
+    }
+
+    .anverse {
+        z-index: 10;
+
+    }
+
+    .overse {
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
     }
 }
 
+.face {
 
+
+    .inpt_question {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70%;
+        text-align: center;
+        padding: 0 2rem;
+
+        .question {
+            width: 95%;
+            height: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            border: none;
+            color: white;
+            background-color: transparent;
+            resize: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
 
 .flashcards_settings {
     position: relative;
@@ -375,30 +424,4 @@ input:not(input[type="submit"]) {
             color: #ffff;
         }
     }
-}
-
-.face {
-    .inpt_question {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 70%;
-
-        .question {
-            width: 95%;
-            height: 50%;
-            margin-left: auto;
-            margin-right: auto;
-            border: none;
-            color: white;
-            background-color: transparent;
-            resize: none;
-
-            &:focus {
-                outline: none;
-            }
-        }
-    }
-
-
 }

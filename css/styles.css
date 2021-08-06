@@ -282,8 +282,17 @@ input:not(input[type=submit]) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-.flashcard .face {
+.flashcard {
+  position: relative;
   height: 35rem;
+  transform-style: preserve-3d;
+  transition: all 1s ease;
+}
+.flashcard .face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30rem;
   width: 100%;
   background-color: #1C1C1C;
   color: #ffff;
@@ -292,6 +301,38 @@ input:not(input[type=submit]) {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.flashcard.rotate {
+  transform: rotateY(180deg);
+}
+.flashcard .anverse {
+  z-index: 10;
+}
+.flashcard .overse {
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.face .inpt_question {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  text-align: center;
+  padding: 0 2rem;
+}
+.face .inpt_question .question {
+  width: 95%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  color: white;
+  background-color: transparent;
+  resize: none;
+}
+.face .inpt_question .question:focus {
+  outline: none;
 }
 
 .flashcards_settings {
@@ -322,26 +363,6 @@ input:not(input[type=submit]) {
 }
 .flashcards_settings .btn_delete ion-icon {
   color: #ffff;
-}
-
-.face .inpt_question {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70%;
-}
-.face .inpt_question .question {
-  width: 95%;
-  height: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  border: none;
-  color: white;
-  background-color: transparent;
-  resize: none;
-}
-.face .inpt_question .question:focus {
-  outline: none;
 }
 
 /*# sourceMappingURL=styles.css.map */
