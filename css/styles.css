@@ -17,6 +17,24 @@
   color: inherit;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+.visible.overlay {
+  visibility: visible;
+}
+
 /* **** globales **** */
 body {
   font-family: "Poppins", sans-serif;
@@ -30,17 +48,20 @@ ul {
   padding: 0;
 }
 
-textarea {
-  text-align: center;
-}
-
 input {
   height: 4rem;
   font-family: inherit;
   text-transform: capitalize;
 }
-input:focus {
+
+input:focus,
+textarea:focus {
   outline: none;
+}
+
+input,
+textarea {
+  width: 100%;
 }
 
 input:not(input[type=submit]) {
@@ -153,6 +174,7 @@ input:not(input[type=submit]) {
   text-align: center;
   font-weight: 500;
   color: #F33535;
+  font-size: calc(.6em + .6vw);
 }
 .submenu_profile li a span {
   margin-left: 1.2rem;
@@ -416,6 +438,9 @@ input:not(input[type=submit]) {
 .definition h3 {
   margin-bottom: 3rem;
 }
+.definition h3 {
+  font-size: calc(1em + 1vw);
+}
 
 @media (min-width: 768px) {
   .definition_flashcard {
@@ -428,6 +453,8 @@ input:not(input[type=submit]) {
 /* **** footer **** */
 .site-footer {
   background-color: #1C1C1C;
+  overflow: hidden;
+  margin-top: 3rem;
 }
 
 .content_footer {
@@ -447,13 +474,20 @@ input:not(input[type=submit]) {
   margin-top: 2rem;
 }
 .info li {
-  height: 6rem;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .info li a {
   color: #fff;
   font-weight: 400;
+  transition: 0.4s all ease-in-out;
 }
-.info:last-child {
+.info li a:hover {
+  color: #EEB600;
+}
+.info li:last-of-type {
   margin: 0;
 }
 
@@ -476,5 +510,67 @@ input:not(input[type=submit]) {
   }
 }
 /* **** modal **** */
+.overlay .modal {
+  background-color: #fff;
+  max-width: 95%;
+  width: 55rem;
+}
+
+.modal .header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 9px 9px 15px rgba(28, 28, 28, 0.2);
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+}
+.modal .header h2 {
+  font-size: calc(1em + 1vw);
+}
+.modal .header .btn_close {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #707070;
+  transition: 0.3s all ease-in-out;
+}
+.modal .header .btn_close:hover {
+  color: #1C1C1C;
+}
+.modal .form {
+  padding: 0 2rem 4rem 2rem;
+}
+
+.form .input_modal {
+  margin-bottom: 2rem;
+}
+.form .input_modal label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.form .input_modal textarea {
+  height: 10rem;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+}
+
+.btn_submit {
+  position: relative;
+}
+.btn_submit ion-icon {
+  position: absolute;
+  top: 1.1rem;
+  left: 20rem;
+}
+.btn_submit input {
+  border: none;
+  background-color: #EEB600;
+  transition: 0.4s all ease-in-out;
+  cursor: pointer;
+}
+.btn_submit input:hover {
+  box-shadow: 9px 9px 15px rgba(238, 182, 0, 0.4);
+}
+.btn_submit .input_color {
+  background-color: transparent;
+}
 
 /*# sourceMappingURL=styles.css.map */

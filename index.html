@@ -207,47 +207,52 @@
     </footer>
     
     <!-- modal window -->
-    <div>
+    <div class="overlay">
         <!-- modal agregar card -->
-        <div>
-            <div>
+        <!-- <div class="modal">
+            <div class="header">
                 <h2>agregar flahscard</h2>
-                <a href="#" class="close">X</a>
+                <a href="#" class="btn_close">X</a>
             </div>
             <div>
-                <form action="#">
-                    <div>
-                        <label for="question"></label>
+                <form action="#" class="form_flashcards form">
+                    <div class="input_modal">
+                        <label for="question">ingrese la pregunta</label>
                         <input type="text" id="question" placeholder="EJ: Planeta Mas Grande Del Sistema Solar">
                     </div>
-                    <div>
-                        <label for="answer"></label>
+                    <div class="input_modal">
+                        <label for="answer">ingrese la respuesta</label>
                         <textarea type="text" id="answer" placeholder="EJ: jupiter"></textarea>
                     </div>
-                    <div>
-                        <ion-icon name="save-outline"></ion-icon>
+                    <div class="input_modal">
+                        <label for="answer">elija un color</label>
+                        <input type="color" class="input_color">
+                    </div>
+                    <div class="btn_submit">
+                        <ion-icon name="save"></ion-icon>
                         <input type="submit" value="guardar">
                     </div>
                 </form>
             </div>
-        </div>
+        </div> -->
         <!-- modal agregar temario -->
-        <div>
-            <div>
+         <div class="modal">
+            <div class="header">
                 <h2>agregar temario</h2>
-                <a href="#" class="close">X</a>
+                <a href="#" class="btn_close">X</a>
             </div>
             <div>
-                <form action="">
-                    <div>
-                        <label for="answer"></label>
-                        <textarea type="text" id="answer" placeholder="EJ: jupiter"></textarea>
+                <form action="#" class="form">
+                    <div class="input_modal">
+                        <label for="topic">ingresa el nombre del temario</label>
+                        <input type="text" id="topic" placeholder="EJ: matematicas">
+                    </div>
+                    <div class="btn_submit"> 
+                        <ion-icon name="save"></ion-icon>
+                        <input type="submit" value="guardar">
                     </div>
                 </form>
-                <div>
-                    <ion-icon name="save-outline"></ion-icon>
-                    <input type="submit" value="guardar">
-                </div>
+               
             </div>
         </div>
     </div>
