@@ -420,13 +420,61 @@ input:not(input[type=submit]) {
 @media (min-width: 768px) {
   .definition_flashcard {
     display: flex;
-    align-items: center;
   }
   .definition_flashcard img {
     height: 40rem;
   }
 }
 /* **** footer **** */
+.site-footer {
+  background-color: #1C1C1C;
+}
+
+.content_footer {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 0 0rem 0;
+  margin-top: 2rem;
+}
+.info li {
+  height: 6rem;
+}
+.info li a {
+  color: #fff;
+  font-weight: 400;
+}
+.info:last-child {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .content_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 0;
+  }
+
+  .info {
+    flex-direction: row;
+    margin-top: 0;
+    padding: 0;
+  }
+  .info li {
+    height: initial;
+    margin-right: 2rem;
+  }
+}
 /* **** modal **** */
 
 /*# sourceMappingURL=styles.css.map */
