@@ -95,6 +95,34 @@ input:not(input[type="submit"]) {
     }
 }
 
+.btn {
+    @extend %btn;
+}
+
+.btn.btn_primary {
+    background-color: $principalColor;
+    transition: .3s all ease-in-out;
+
+    ion-icon {
+        color: #000;
+    }
+
+    &:hover {
+        box-shadow: 9px 9px 15px $shadowBtn;
+    }
+}
+
+.btn.btn_secundary {
+    color: $deleteColor;
+    outline: 2px solid $deleteColor;
+
+    &:hover {
+        color: #fff;
+        background-color: $deleteColor;
+
+    }
+}
+
 /* **** header **** */
 .bar {
     box-shadow: 0px 7px 13px $shadow;
@@ -284,10 +312,6 @@ input:not(input[type="submit"]) {
     font-size: calc(1.3em + 1.3vw);
 }
 
-.btn {
-    @extend %btn;
-    background-color: $principalColor;
-}
 
 
 @media (min-width:768px) {
@@ -321,6 +345,7 @@ input:not(input[type="submit"]) {
     .container_flashcards {
         grid-template-columns: repeat(2, 1fr);
     }
+
 }
 
 .flashcard {
@@ -347,7 +372,7 @@ input:not(input[type="submit"]) {
         justify-content: center;
     }
 
-    &.rotate {
+    &:hover {
         transform: rotateY(180deg);
     }
 
@@ -423,5 +448,20 @@ input:not(input[type="submit"]) {
         ion-icon {
             color: #ffff;
         }
+    }
+}
+
+.delete_topic {
+    margin-top: 2rem;
+
+    .btn_delete-topic {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .delete_topic {
+        display: flex;
+        justify-content: flex-end;
     }
 }

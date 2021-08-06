@@ -5,19 +5,17 @@
     padding: 1.2rem 2.5rem;
     margin-bottom: 2rem;
     font-weight: 600;
+    transition: .2s all ease-in-out;
 
     ion-icon {
         font-size: 1.8rem;
-        color: #000;
         font-weight: 800;
+        margin-right: 1rem;
     }
 }
 
-%btn.btn_primary {
-
-    transition: .3s all ease-in-out;
-}
-
-%btn.btn_primary:hover {
-    box-shadow: 9px 9px 15px $shadowBtn;
+%btn:hover {
+    ion-icon {
+        color: inherit;
+    }
 }
