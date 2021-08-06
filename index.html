@@ -41,51 +41,72 @@
     </header>
     <!-- section managment flahscards -->
     <section class="mg-top container">
-        <div class="container_list-topics">
-            <a href="#" class="btn_topics">
-                <span>temarios</span>
-                <ion-icon name="chevron-down-outline"></ion-icon>
-            </a>
-            <div>
-                <div class="input_search" data-search="temarios">
-                    <input type="search" name="search"placeholder="Buscar temarios">
-                    <ion-icon name="search-outline"></ion-icon>
-                </div>
-                <div class="topics_container">
-                    <ul class="list_topics">
-                        <li class="topic active">
-                            <span class="">ciencias</span>
-                            <a href="">
-                                <ion-icon name="trash-outline"></ion-icon>
-                            </a>
-                            
-                        </li>
-                        <li class="topic">
-                            <span>sociales</span>
-                            <a href="">
-                                <ion-icon name="trash-outline"></ion-icon>
-                            </a>
-                        </li>
-                        <li class="topic">
-                            <span>ingles</span>
-                            <a href="">
-                                <ion-icon name="trash-outline"></ion-icon>
-                            </a>
-                        </li>
+        <ul class="container_list-topics">
+            <li class="btn_open-topics">
+                <a href="#" class="btn_topics">
+                    <span>temarios</span>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                </a>
+                <ul class="submenu_topics">
+                   <li>
+                       <div class="input_search" data-search="temarios">
+                            <input type="search" name="search"placeholder="Buscar temarios">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </div>
+                    </li> 
+                    <li class="topics_container">
                         
-                    </ul>
-                </div>
-                <div class="container_new-topic">
-                    <a href="#">
-                        <ion-icon name="add-outline"></ion-icon>
-                        <span>Nuevo</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <h2>El Principito</h2>
+                            <ul class="list_topics">
+                                <li class="topic active">
+                                    <span class="">ciencias</span>
+                                    <a href="#">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </a>
+                                    
+                                </li>
+                                <li class="topic ">
+                                    <span class="">ciencias</span>
+                                    <a href="#">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </a>
+                                    
+                                </li>
+                                <li class="topic ">
+                                    <span class="">ciencias</span>
+                                    <a href="#">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </a>
+                                    
+                                </li>
+                                <li class="topic">
+                                    <span>sociales</span>
+                                    <a href="#">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </a>
+                                </li>
+                                <li class="topic">
+                                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro nesciunt recusandae nostrum nam fugit. Minima reprehenderit quae nobis quam nihil placeat odit in excepturi dolorem pariatur. Aut minima dolor incidunt.</span>
+                                    <a href="#">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        
+                    </li>
+                    <div class="container_new-topic">
+                        <a href="#">
+                            <ion-icon name="add-outline"></ion-icon>
+                            <span>Nuevo</span>
+                        </a>
+                    </div>
+                </ul>
+            </li>
+            
+        </ul>
+        <h2 id="topic_title">El Principito</h2>
         <div>
-            <a href="#">
+            <a href="#" class="btn btn_primary">
                 <ion-icon name="add-outline"></ion-icon>
                 <span>nueva flashcard</span>
             </a>
