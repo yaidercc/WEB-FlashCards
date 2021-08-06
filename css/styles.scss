@@ -6,6 +6,7 @@
 /* **** globales **** */
 body {
     font-family: 'Poppins', sans-serif;
+
 }
 
 a {
@@ -18,8 +19,13 @@ ul {
     padding: 0;
 }
 
+textarea {
+    text-align: center;
+
+}
+
 input {
-    outline: none;
+
     height: 4rem;
     font-family: inherit;
     text-transform: capitalize;
@@ -69,6 +75,25 @@ input:not(input[type="submit"]) {
 
 }
 
+.scroll {
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $noSelected;
+        border-radius: 2rem;
+        border: 2px solid #f1f2f3;
+    }
+
+    &::-webkit-scrollbar:horizontal {
+        height: 1rem;
+    }
+
+    &::-webkit-scrollbar:vertical {
+        width: 1rem;
+    }
+}
 
 /* **** header **** */
 .bar {
@@ -89,6 +114,7 @@ input:not(input[type="submit"]) {
         display: flex;
         align-items: center;
     }
+
 
     .profile>li {
         position: relative;
@@ -193,23 +219,7 @@ input:not(input[type="submit"]) {
         padding: 0;
     }
 
-    &::-webkit-scrollbar {
-        -webkit-appearance: none;
-    }
 
-    &::-webkit-scrollbar-thumb {
-        background-color: #797979;
-        border-radius: 2rem;
-        border: 2px solid #f1f2f3;
-    }
-
-    &::-webkit-scrollbar:horizontal {
-        height: 1rem;
-    }
-
-    &::-webkit-scrollbar:vertical {
-        width: 1rem;
-    }
 }
 
 .list_topics {
@@ -288,8 +298,107 @@ input:not(input[type="submit"]) {
 
         .input_search {
             width: 25rem;
+        }
 
+    }
+
+}
+
+/* **** flashcard  **** */
+
+.container_flashcards {
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-gap: 2rem;
+    height: 60rem;
+    box-shadow: 3px 3px 5px rgba($color: $blackColor, $alpha: 0.3);
+    overflow-y: auto;
+    padding: 1rem;
+
+}
+
+@media (min-width: 768px) {
+    .container_flashcards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.flashcard {
+    .face {
+        height: 35rem;
+        width: 100%;
+        background-color: $blackColor;
+        color: #ffff;
+    }
+
+    .flashcards_settings {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+}
+
+
+
+.flashcards_settings {
+    position: relative;
+
+    a {
+        padding: 1rem;
+        color: #fff;
+        font-size: 2rem;
+    }
+
+    .btn_rotate {
+        font-size: 2.5rem;
+    }
+
+    .settings {
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn_palette {
+        left: 0;
+        background-color: $paletteColor;
+    }
+
+    .btn_delete {
+        right: 0;
+        background-color: $deleteColor;
+
+        ion-icon {
+            color: #ffff;
         }
     }
+}
+
+.face {
+    .inpt_question {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70%;
+
+        .question {
+            width: 95%;
+            height: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            border: none;
+            color: white;
+            background-color: transparent;
+            resize: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
 
 }

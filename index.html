@@ -41,6 +41,7 @@
     </header>
     <!-- section managment flahscards -->
     <section class="mg-top container">
+        <!-- submenu topics -->
         <ul class="container_list-topics">
             <li class="btn_open-topics">
                 <a href="#" class="btn_topics">
@@ -54,9 +55,9 @@
                             <ion-icon name="search-outline"></ion-icon>
                         </div>
                     </li> 
-                    <li class="topics_container">
+                    <li class="topics_container scroll">
                         
-                            <ul class="list_topics">
+                            <ul class="list_topics ">
                                 <li class="topic active">
                                     <span class="">ciencias</span>
                                     <a href="#">
@@ -104,6 +105,7 @@
             </li>
             
         </ul>
+        <!-- flascards managment -->
         <h2 id="topic_title">El Principito</h2>
         <div class="flashcard_customize">
             <a href="#" class="btn btn_primary">
@@ -118,19 +120,98 @@
     </section>
     <!-- flashcards -->
     <main class="mg-top container">
-        <div>
-            <div>
-                <div>
-                    <a href="#">
-                        <ion-icon name="color-palette-outline"></ion-icon>
-                    </a>
-                    <a href="#">ver</a>
-                    <a href="#">
-                        <ion-icon name="trash-outline"></ion-icon>
-                    </a>
+        <div class="container_flashcards scroll">
+            <div class="flashcard">
+                <div class="face anverse">
+                    <div class="flashcards_settings">
+                        <a href="#" class="settings btn_palette">
+                            <ion-icon name="color-palette-outline"></ion-icon>
+                        </a>
+                        <a href="#" class="btn_rotate">
+                            <ion-icon name="refresh-outline"></ion-icon>
+                        </a>
+                        <a href="#" class="settings btn_delete">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="inpt_question">
+                        <textarea class="question">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </textarea>
+                    </div>
+                   
                 </div>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <!-- <div class="face overse">
+                    <div class="flashcards_settings">
+                        <a href="#" class="btn_rotate">
+                            <ion-icon name="refresh-outline"></ion-icon>
+                        </a>
+                        
+                    </div>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div> -->
             </div>
+            <div class="flashcard">
+                <div class="face anverse">
+                    <div class="flashcards_settings">
+                        <a href="#" class="settings btn_palette">
+                            <ion-icon name="color-palette-outline"></ion-icon>
+                        </a>
+                        <a href="#" class="btn_rotate">
+                            <ion-icon name="refresh-outline"></ion-icon>
+                        </a>
+                        <a href="#" class="settings btn_delete">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="inpt_question">
+                        <textarea class="question">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </textarea>
+                    </div>
+                   
+                </div>
+                <!-- <div class="face overse">
+                    <div class="flashcards_settings">
+                        <a href="#" class="btn_rotate">
+                            <ion-icon name="refresh-outline"></ion-icon>
+                        </a>
+                        
+                    </div>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div> -->
+            </div>
+            <div class="flashcard">
+                <div class="face anverse">
+                    <div class="flashcards_settings">
+                        <a href="#" class="settings btn_palette">
+                            <ion-icon name="color-palette-outline"></ion-icon>
+                        </a>
+                        <a href="#" class="btn_rotate">
+                            <ion-icon name="refresh-outline"></ion-icon>
+                        </a>
+                        <a href="#" class="settings btn_delete">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="inpt_question">
+                        <textarea class="question" id="textarea">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                        </textarea>
+                    </div>
+                   
+                </div>
+                <!-- <div class="face overse">
+                    <div class="flashcards_settings">
+                        <a href="#" class="btn_rotate">
+                            <ion-icon name="refresh-outline"></ion-icon>
+                        </a>
+                        
+                    </div>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div> -->
+            </div>
+            
         </div>
         <a href="#">
             <ion-icon name="trash-outline"></ion-icon>
@@ -215,5 +296,6 @@
             </div>
         </div>
     </div>
+
 </body>
 </html>
