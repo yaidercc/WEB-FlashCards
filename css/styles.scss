@@ -168,6 +168,10 @@ input:not(input[type="submit"]) {
     .submenu_profile {
         display: none;
         position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
         width: 120px;
         padding: 1rem 2rem;
         text-align: center;
@@ -178,7 +182,7 @@ input:not(input[type="submit"]) {
 }
 
 .submenu_profile {
-    right: -7px;
+
 
     li a {
         display: block;
@@ -558,7 +562,6 @@ input:not(input[type="submit"]) {
 
 .content_footer {
     margin-top: 3rem;
-    padding: 1rem 0;
     text-align: center;
     margin-bottom: .5rem;
 
@@ -574,7 +577,7 @@ input:not(input[type="submit"]) {
     margin-top: 2rem;
 
     li {
-        height: 6rem;
+        margin-top: 2rem;
 
         a {
             color: #fff;
