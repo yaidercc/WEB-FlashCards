@@ -12,7 +12,10 @@ body {
 a {
     color: $blackColor;
 }
-
+label{
+    display: inline-block;
+    margin-bottom: .5rem;
+}
 ul {
     padding: 0;
 }
@@ -53,11 +56,21 @@ input:not(input[type="submit"]) {
     margin-left: auto;
     margin-right: auto;
 }
-
+.hide{
+    display: none!important;
+}
 .mg-top {
     margin-top: 4rem;
 }
-
+.input{
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    input {
+        width: 100%;
+    }
+    
+}
 
 .input_search {
     position: relative;
@@ -660,12 +673,7 @@ input:not(input[type="submit"]) {
 
 .form {
     .input_modal {
-        margin-bottom: 2rem;
-
-        label {
-            display: block;
-            margin-bottom: 1rem;
-        }
+        
 
         textarea {
             height: 10rem;
@@ -697,5 +705,32 @@ input:not(input[type="submit"]) {
 
     .input_color {
         background-color: transparent;
+    }
+}
+// login
+.container-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #eee;
+    .container-form{
+        border-radius: .4rem;
+        padding: 4rem 1.5rem;
+        background-color: #fff;
+        h2{
+            margin-bottom: 3rem;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        
+    }
+
+}
+.text-sign-in{
+    margin-top: 2rem;
+    text-align: center;
+    .get-in{
+        color: $principalColor;
     }
 }

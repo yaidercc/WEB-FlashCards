@@ -1,21 +1,24 @@
-let $btnOpenTopics = document.getElementById("btn_open-topics");
-let $lisTopics = document.getElementById("submenu_topics");
+// variables
+const $btnOpenTopics = document.getElementById("btn_open-topics");
+const $lisTopics = document.getElementById("submenu_topics");
 let $rotateFlashcard = document.getElementsByClassName("btn_rotate");
 let $rotateBackFlashcard = document.getElementsByClassName("back");
 let $flashcards = document.getElementsByClassName("flashcard");
-let $openModalTopic = document.getElementById("btn_new-Topic");
-let $openModalFlashcard = document.getElementById("btn_new-flashcard");
-let $overlay = document.getElementById("overlay");
-let $modal = document.getElementById("modal");
-let $closeModal = document.getElementById("btn_close");
-let $titleModal = document.getElementById("title_modal");
-let $formTopic = document.getElementById("form_topic");
-let $formFlashcard = document.getElementById("form_flashcards");
+const $openModalTopic = document.getElementById("btn_new-Topic");
+const $openModalFlashcard = document.getElementById("btn_new-flashcard");
+const $overlay = document.getElementById("overlay");
+const $modal = document.getElementById("modal");
+const $closeModal = document.getElementById("btn_close");
+const $titleModal = document.getElementById("title_modal");
+const $formTopic = document.getElementById("form_topic");
+const $formFlashcard = document.getElementById("form_flashcards");
+
 // Events
 for (const i of $rotateFlashcard) {
     i.addEventListener("click", (e) => {
         e.preventDefault();
         for (const j of $flashcards) {
+
             if (j.classList.contains("rotate")) {
                 j.classList.remove("rotate");
             }

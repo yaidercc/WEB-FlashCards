@@ -44,6 +44,11 @@ a {
   color: #1C1C1C;
 }
 
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
 ul {
   padding: 0;
 }
@@ -85,8 +90,21 @@ input:not(input[type=submit]) {
   margin-right: auto;
 }
 
+.hide {
+  display: none !important;
+}
+
 .mg-top {
   margin-top: 4rem;
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.input input {
+  width: 100%;
 }
 
 .input_search {
@@ -565,13 +583,6 @@ input:not(input[type=submit]) {
   padding: 0 2rem 4rem 2rem;
 }
 
-.form .input_modal {
-  margin-bottom: 2rem;
-}
-.form .input_modal label {
-  display: block;
-  margin-bottom: 1rem;
-}
 .form .input_modal textarea {
   height: 10rem;
   padding: 1rem 2rem;
@@ -597,6 +608,32 @@ input:not(input[type=submit]) {
 }
 .btn_submit .input_color {
   background-color: transparent;
+}
+
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #eee;
+}
+.container-login .container-form {
+  border-radius: 0.4rem;
+  padding: 4rem 1.5rem;
+  background-color: #fff;
+}
+.container-login .container-form h2 {
+  margin-bottom: 3rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.text-sign-in {
+  margin-top: 2rem;
+  text-align: center;
+}
+.text-sign-in .get-in {
+  color: #EEB600;
 }
 
 /*# sourceMappingURL=styles.css.map */
