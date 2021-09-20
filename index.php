@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(!isset( $_SESSION["user"])){
+    header('location: login.php');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,11 +40,11 @@
           <li class="btn_profile">
             <a href="#">
               <img src="img/icon-men.png" alt="men icon" />
-              <span>yaider c.</span>
+              <span><?php echo $_SESSION["user"];?></span>
             </a>
             <ul class="submenu_profile">
               <li>
-                <a href="#" class="leave">
+                <a href="php/salir.php" class="leave" id="leave">
                   <ion-icon name="power-outline"></ion-icon>
                   <span>salir</span>
                 </a>
@@ -67,9 +74,12 @@
                 <ion-icon name="search-outline"></ion-icon>
               </div>
             </li>
-            <li class="topics_container scroll">
-              <!-- <p>No tienes temarios</p> -->
-              <ul class="list_topics">
+            <li class="topics_container scroll" id="topics_container">
+                <div class="not-found">
+                  <span><ion-icon name="search-outline"></ion-icon></span>
+                  <p>No tienes temarios</p>
+                </div> 
+              <!-- <ul class="list_topics">
                 <li class="topic active">
                   <span class="">ciencias</span>
                   <a href="#">
@@ -105,7 +115,7 @@
                     <ion-icon name="trash-outline"></ion-icon>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
             </li>
             <div class="container_new-topic" id="btn_new-Topic">
               <a href="#">
@@ -136,78 +146,11 @@
     </section>
     <!-- flashcards -->
     <main class="mg-top container">
-      <div class="container_flashcards scroll">
-        <div class="flashcard">
-          <div class="face anverse">
-            <div class="flashcards_settings">
-              <a href="#" class="settings btn_palette">
-                <ion-icon name="color-palette"></ion-icon>
-              </a>
-              <a href="#" class="btn_rotate">
-                <ion-icon name="refresh-outline"></ion-icon>
-              </a>
-              <a href="#" class="settings btn_delete">
-                <ion-icon name="trash-outline"></ion-icon>
-              </a>
-            </div>
-            <div class="inpt_question">
-              <p>pregunta.</p>
-
-              <!-- <textarea class="question">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        </textarea> -->
-            </div>
-          </div>
-          <div class="face overse">
-            <div class="flashcards_settings">
-              <a href="#" class="btn_rotate back">
-                <ion-icon name="refresh-outline"></ion-icon>
-              </a>
-            </div>
-            <div class="inpt_question">
-              <p>respuesta.</p>
-              <!-- <textarea class="question">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            </textarea> -->
-            </div>
-          </div>
-        </div>
-        <div class="flashcard">
-          <div class="face anverse">
-            <div class="flashcards_settings">
-              <a href="#" class="settings btn_palette">
-                <ion-icon name="color-palette"></ion-icon>
-              </a>
-              <a href="#" class="btn_rotate">
-                <ion-icon name="refresh-outline"></ion-icon>
-              </a>
-              <a href="#" class="settings btn_delete">
-                <ion-icon name="trash-outline"></ion-icon>
-              </a>
-            </div>
-            <div class="inpt_question">
-              <p>pregunta.</p>
-
-              <!-- <textarea class="question">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        </textarea> -->
-            </div>
-          </div>
-          <div class="face overse">
-            <div class="flashcards_settings">
-              <a href="#" class="btn_rotate back">
-                <ion-icon name="refresh-outline"></ion-icon>
-              </a>
-            </div>
-            <div class="inpt_question">
-              <p>respuesta.</p>
-              <!-- <textarea class="question">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            </textarea> -->
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="not-found">
+        <span><ion-icon name="search-outline"></ion-icon></span>
+        <p>No tienes flashcards</p>
+      </div> 
+      
       <div class="delete_topic">
         <a href="#" class="btn btn_secundary">
           <ion-icon name="trash-outline"></ion-icon>

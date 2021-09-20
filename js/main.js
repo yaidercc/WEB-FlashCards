@@ -12,6 +12,8 @@ const $closeModal = document.getElementById("btn_close");
 const $titleModal = document.getElementById("title_modal");
 const $formTopic = document.getElementById("form_topic");
 const $formFlashcard = document.getElementById("form_flashcards");
+const $containerTopics = document.getElementById("topics_container");
+// functions
 
 // Events
 for (const i of $rotateFlashcard) {
@@ -54,3 +56,7 @@ $closeModal.addEventListener("click", (e) => {
     $formFlashcard.classList.add("hidden");
     $overlay.classList.remove("visible")
 })
+
+window.onload = () => {
+
+}

@@ -71,7 +71,19 @@ input:not(input[type="submit"]) {
     }
     
 }
-
+.not-found{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(155, 153, 153);
+    p{
+        margin-top: 1rem;
+    }
+    span{
+        font-size: 3rem;
+    }
+}
 .input_search {
     position: relative;
     width: 100%;
@@ -282,12 +294,12 @@ input:not(input[type="submit"]) {
 
 }
 
-
-
 .topics_container {
-    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 20rem;
-
+    overflow-y: auto;
     .list_topics {
         padding: 0;
     }
@@ -725,8 +737,8 @@ input:not(input[type="submit"]) {
         }
         
     }
-
 }
+
 .text-sign-in{
     margin-top: 2rem;
     text-align: center;

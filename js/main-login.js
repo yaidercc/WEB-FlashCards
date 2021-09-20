@@ -13,11 +13,42 @@ $getIn.forEach((el) => {
         })
     })
 })
-$formLogin.addEventListener("click", (e) => {
-    e.preventDefault();
-    alert("login ingresado")
+
+$("#form-login").submit(function (event) {
+    event.preventDefault();
+    jQuery
+        .ajax({
+            url: "php/ingreso.php?option=login",
+            type: "POST",
+            dataType: "json",
+            data: $(this).serialize(),
+        })
+        .done(function (respuesta) {
+            if (respuesta) {
+                location.href = "index.php";
+            } else {
+                swal.fire("Error", "Datos incorrectos", "error");
+            }
+        }).fail((res) => {
+            console.log(res);
+        })
 })
-$formSignIn.addEventListener("click", (e) => {
-    e.preventDefault();
-    alert("sign in ingresado")
+$("#form-sign-in").submit(function (event) {
+    event.preventDefault();
+    jQuery
+        .ajax({
+            url: "php/ingreso.php?option=sign",
+            type: "POST",
+            dataType: "json",
+            data: $(this).serialize(),
+        })
+        .done(function (respuesta) {
+            if (respuesta) {
+                location.href = "index.php";
+            } else {
+                swal.fire("Error", "Nombre De Usuario En Uso", "error");
+            }
+        }).fail((res) => {
+            console.log(res);
+        })
 })

@@ -19,6 +19,7 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script src="js/jquery-v1.min.js"></script>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/styles.css" />
@@ -27,15 +28,16 @@
   <body>
     <div class="container-login">
       <div class="container-form">
-        <form action="#" class="form" id="form-login">
+        <!-- action="php/ingreso.php" method="POST" -->
+        <form action="#" class="form" id="form-login" >
           <h2>iniciar sesión</h2>
           <div class="input">
-            <label for="">Ingresa tu usuario</label>
-            <input type="email" name="email" placeholder="usuario" />
+            <label >Ingresa tu usuario</label>
+            <input type="text" name="user" placeholder="usuario" id="us" autocomplete="off" />
           </div>
           <div class="input">
-            <label for="">Ingresa tu clave</label>
-            <input type="password" name="clave" placeholder="clave" />
+            <label >Ingresa tu clave</label>
+            <input type="password" name="clave" placeholder="clave" id="clav" autocomplete="off" />
           </div>
           <div class="btn_submit">
             <input type="submit" value="Ingresar" />
@@ -44,18 +46,19 @@
             No tienes cuenta? <a href="#" class="get-in">Registrate</a>
           </p>
         </form>
+        <!-- registro -->
         <form action="#" class="form" id="form-sign-in">
           <h2>Registrarte</h2>
           <div class="input">
-            <label for="">Ingresa tu usuario</label>
-            <input type="password" name="clave" placeholder="usuario" />
+            <label >Ingresa tu usuario</label>
+            <input type="text" name="user" placeholder="usuario" />
           </div>
           <div class="input">
-            <label for="email">Ingresa tu correo</label>
+            <label>Ingresa tu correo</label>
             <input type="email" name="email" placeholder="email" />
           </div>
           <div class="input">
-            <label for="clave">Ingresa tu clave</label>
+            <label >Ingresa tu clave</label>
             <input type="password" name="clave" placeholder="clave" />
           </div>
           <div class="btn_submit">
@@ -67,6 +70,7 @@
         </form>
       </div>
     </div>
+    <script src="js/sweetalert2.all.min.js"></script>
     <script src="js/main-login.js"></script>
   </body>
 </html>
