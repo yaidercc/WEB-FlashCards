@@ -175,6 +175,14 @@ input:not(input[type=submit]) {
   display: none;
 }
 
+.good {
+  border: 2px solid #66BF6B;
+}
+
+.bad {
+  border: 2px solid #bf6666;
+}
+
 /* **** animations **** */
 @keyframes openTopics {
   0% {
@@ -636,7 +644,7 @@ input:not(input[type=submit]) {
 }
 .container-login .container-form {
   border-radius: 0.4rem;
-  padding: 4rem 1.5rem;
+  padding: 2rem 1.5rem;
   background-color: #fff;
 }
 .container-login .container-form h2 {
@@ -651,6 +659,21 @@ input:not(input[type=submit]) {
 }
 .text-sign-in .get-in {
   color: #EEB600;
+}
+
+.validacion {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  color: #EEB600;
+  font-weight: bold;
+}
+.validacion span {
+  margin-left: 0.5rem;
+}
+.validacion ion-icon {
+  font-size: 1.6rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

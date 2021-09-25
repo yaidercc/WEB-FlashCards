@@ -28,16 +28,17 @@
   <body>
     <div class="container-login">
       <div class="container-form">
-        <!-- action="php/ingreso.php" method="POST" -->
         <form action="#" class="form" id="form-login" >
           <h2>iniciar sesión</h2>
+        
           <div class="input">
             <label >Ingresa tu usuario</label>
-            <input type="text" name="user" placeholder="usuario" id="us" autocomplete="off" />
+            <input type="text" name="user" placeholder="usuario" autocomplete="off" required/>
           </div>
           <div class="input">
             <label >Ingresa tu clave</label>
-            <input type="password" name="clave" placeholder="clave" id="clav" autocomplete="off" />
+            <input type="password" name="clave" placeholder="clave" autocomplete="off"  required/>
+            
           </div>
           <div class="btn_submit">
             <input type="submit" value="Ingresar" />
@@ -49,18 +50,23 @@
         <!-- registro -->
         <form action="#" class="form" id="form-sign-in">
           <h2>Registrarte</h2>
+          
           <div class="input">
             <label >Ingresa tu usuario</label>
-            <input type="text" name="user" placeholder="usuario" />
+            <input type="text" name="user" id="inpt_user" placeholder="usuario" required/>
+            <p class="validacion"><ion-icon name="alert-circle-outline"></ion-icon> <span>minimo 6 caracteres, sin espacios</span></p>
           </div>
           <div class="input">
             <label>Ingresa tu correo</label>
-            <input type="email" name="email" placeholder="email" />
+            <input type="email" name="email" id="inpt_email"  placeholder="email" required/>
+            
           </div>
           <div class="input">
             <label >Ingresa tu clave</label>
-            <input type="password" name="clave" placeholder="clave" />
+            <input type="password" name="clave" id="inpt_clave" placeholder="clave" required/>
+            <p class="validacion"> <ion-icon name="alert-circle-outline"></ion-icon><span>minimo 8 caracteres, una mayuscula y un numero</span></p>
           </div>
+          
           <div class="btn_submit">
             <input type="submit" value="Ingresar" />
           </div>
