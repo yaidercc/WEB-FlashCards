@@ -46,4 +46,14 @@ class model {
             return array("status"=>false);
         }
     }
+    function Flashcards($id){
+        $query= "SELECT f.anverso,f.reverso,f.id_card FROM `flashcard` f inner join `flashcard_tema` ft on ft.id_flashcard=f.id_card where ft.id_tema=$id";
+        $sql=$this->con->prepare($query);
+        $sql->execute();
+        if($sql->rowCount()>0){
+            return array("status"=>true,"data"=>$sql->fetchAll());
+        }else{
+            return array("status"=>false);
+        }
+    }
 }

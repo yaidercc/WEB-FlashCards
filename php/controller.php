@@ -14,4 +14,7 @@ class Controller{
     public function getTopics(){
         return $this->model->Topics();
     }
+    public function getFlashcards($id){
+        return $this->model->Flashcards($id);
+    }
 }

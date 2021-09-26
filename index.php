@@ -105,18 +105,44 @@
       </div>
     </section>
     <!-- flashcards -->
-    <main class="mg-top container">
-      <div class="not-found">
+    <main class="mg-top container" id="main">
+    <div class="container_flashcards scroll" >
+        <div class="flashcard" >
+            <div class="face anverse">
+              <div class="flashcards_settings">
+                  <a href="#" class="settings btn_palette" >
+                      <ion-icon name="color-palette"></ion-icon>
+                  </a>
+                  <a href="#" class="btn_rotate">
+                      <ion-icon name="refresh-outline"></ion-icon>
+                  </a>
+                  <a href="#" class="settings btn_delete" >
+                      <ion-icon name="trash-outline"></ion-icon>
+                  </a>
+              </div>
+              <div class="inpt_question">
+              <p>pregunta.</p>
+              </div>
+          </div>
+          <div class="face overse">
+            <div class="flashcards_settings">
+                <a href="#" class="btn_rotate back">
+                    <ion-icon name="refresh-outline"></ion-icon>
+                </a>
+            </div>
+            <div class="inpt_question">
+                <p>respuesta.</p>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+      <!-- <div class="not-found">
         <span><ion-icon name="search-outline"></ion-icon></span>
         <p>No tienes flashcards</p>
-      </div> 
+      </div>  -->
       
-      <div class="delete_topic">
-        <a href="#" class="btn btn_secundary">
-          <ion-icon name="trash-outline"></ion-icon>
-          <span>eliminar temario</span>
-        </a>
-      </div>
+      
     </main>
     <!-- definition flashcards -->
     <section class="mg-top container definition_flashcard">

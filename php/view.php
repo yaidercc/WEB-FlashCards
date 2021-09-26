@@ -21,9 +21,11 @@ switch ($_POST["method"]) {
     case 'getTopics':
         echo json_encode($controller->getTopics());
         break;
-    
+    case 'getFlashcards':
+        echo json_encode($controller->getFlashcards($_POST["id"]));
+        
+        break;
 }
-// echo json_encode($controller->login("yaider","123"));
 // funcion para validar si los campos no estan vacios
 function validarDatos(...$data){
     foreach ($data as $key ) {
