@@ -75,47 +75,7 @@
               </div>
             </li>
             <li class="topics_container scroll" id="topics_container">
-                <div class="not-found">
-                  <span><ion-icon name="search-outline"></ion-icon></span>
-                  <p>No tienes temarios</p>
-                </div> 
-              <!-- <ul class="list_topics">
-                <li class="topic active">
-                  <span class="">ciencias</span>
-                  <a href="#">
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </a>
-                </li>
-                <li class="topic">
-                  <span class="">ciencias</span>
-                  <a href="#">
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </a>
-                </li>
-                <li class="topic">
-                  <span class="">ciencias</span>
-                  <a href="#">
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </a>
-                </li>
-                <li class="topic">
-                  <span>sociales</span>
-                  <a href="#">
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </a>
-                </li>
-                <li class="topic">
-                  <span
-                    >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Porro nesciunt recusandae nostrum nam fugit. Minima
-                    reprehenderit quae nobis quam nihil placeat odit in
-                    excepturi dolorem pariatur. Aut minima dolor incidunt.</span
-                  >
-                  <a href="#">
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </a>
-                </li>
-              </ul> -->
+              
             </li>
             <div class="container_new-topic" id="btn_new-Topic">
               <a href="#">

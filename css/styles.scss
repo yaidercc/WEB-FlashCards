@@ -302,12 +302,11 @@ input:not(input[type="submit"]) {
 
 .topics_container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     height: 20rem;
     overflow-y: auto;
     .list_topics {
         padding: 0;
+        width: 100%;
     }
 
     &.not-found {
@@ -323,7 +322,6 @@ input:not(input[type="submit"]) {
 .list_topics {
     li {
         display: flex;
-        align-items: center;
         justify-content: space-between;
         padding: 1.4rem 2rem;
         margin-bottom: .5rem;

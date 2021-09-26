@@ -11,4 +11,7 @@ class Controller{
     public function Signin($username,$email,$clave){
         return $this->model->signin($username,$email,$clave);
     }
+    public function getTopics(){
+        return $this->model->Topics();
+    }
 }

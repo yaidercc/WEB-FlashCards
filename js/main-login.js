@@ -7,6 +7,7 @@ const $inputEmail = document.getElementById("inpt_email");
 const $inputClave = document.getElementById("inpt_clave");
 const $inputUser = document.getElementById("inpt_user");
 // events
+// ocultar formulario de registro
 window.onload = $formSignIn.classList.add("hide");
 // evento a los botones de cambio de formulario
 $getIn.forEach((el) => {
@@ -21,10 +22,8 @@ $getIn.forEach((el) => {
 $formLogin.addEventListener("submit", (event) => {
     // previene la redireccion
     event.preventDefault();
-    // guarda la promesa que viene de la peticion
-    let data = transferenciaDatos("POST", "iniciar", $formLogin);
     // valida la promesa
-    data.then(resp => {
+    transferenciaDatos("POST", "iniciar", $formLogin).then(resp => {
         // si el estado de la promesa es verdadero, redirecciona
         if (resp.status) {
             location.href = "index.php";
@@ -105,5 +104,18 @@ function validarCampos(username, email, clave) {
 
     }
 
+}
 
+function transferenciaDatos(evento, metodo, form) {
+    let formulario = new FormData(form);
+    let datos;
+    formulario.append("method", metodo);
+    datos = fetch("https://localhost/Mis%20Proyectos/En%20proceso/FlashCards-v2/php/view.php", {
+            method: evento,
+            body: formulario,
+        })
+        .then(resp => resp.json())
+        .then(data => data)
+        .catch(err => err)
+    return datos;
 }

@@ -8,12 +8,15 @@ class model {
         $this->con=$this->con->connectionBd();
     }
     function login($username,$clave){
-        $query= "SELECT username,clave FROM usuario WHERE username='$username' AND clave='$clave'";
+        $query= "SELECT * FROM usuario WHERE username='$username' AND clave='$clave'";
         $sql=$this->con->prepare($query);
         $sql->execute();
         $data=$sql->fetch(PDO::FETCH_ASSOC);
         if($sql->rowCount()>0){
+            
             $_SESSION['user']=$data['username'];
+            $_SESSION['id_user']=$data['id'];
+            // echo "SELECT id,username,clave FROM usuario WHERE username='$username' AND clave='$clave'";
             return array("status"=>true);
         }else{
             return array("status"=>false,"mensaje"=>"datos incorrectos");
@@ -33,5 +36,14 @@ class model {
         }
         
     }
+    function Topics(){
+        $query= "SELECT * FROM `tema` WHERE  `id_usuario`=  $_SESSION[id_user]";
+        $sql=$this->con->prepare($query);
+        $sql->execute();
+        if($sql->rowCount()>0){
+            return array("status"=>true,"data"=>$sql->fetchAll());
+        }else{
+            return array("status"=>false);
+        }
+    }
 }
-

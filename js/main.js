@@ -15,7 +15,56 @@ const $formFlashcard = document.getElementById("form_flashcards");
 const $containerTopics = document.getElementById("topics_container");
 // functions
 
+// peticiones
+function peticion(metodo, params = null) {
+    let data = new FormData();
+    data.append("method", metodo)
+    if (params) {
+        data.append(params)
+    }
+    let topics = fetch("https://localhost/Mis%20Proyectos/En%20proceso/FlashCards-v2/php/view.php", {
+            method: "POST",
+            body: data
+        })
+        .then(resp => resp.json())
+        .then(data => data)
+        .catch(err => err)
+    return topics;
+}
+// traer temarios
+function showTopics() {
+    peticion("getTopics").then(data => {
+
+        if (data.status) {
+            console.log(data);
+            let topics = `<ul class="list_topics">`
+            const arr = [...data.data];
+            for (const key of arr) {
+                topics += `
+                <li class="topic" data-id=${key.id}>
+                  <span class="">${key.tema}</span>
+                  <a href="#">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </a>
+                </li>`;
+            }
+            topics += `</ul>`;
+            $containerTopics.innerHTML = topics;
+
+        } else {
+            $containerTopics.innerHTML = `
+            <div class="not-found">
+            <span><ion-icon name="search-outline"></ion-icon></span>
+            <p>No tienes temarios</p>
+            </div> `
+        }
+    }).catch()
+}
 // Events
+
+window.onload = () => {
+    showTopics();
+}
 for (const i of $rotateFlashcard) {
     i.addEventListener("click", (e) => {
         e.preventDefault();
@@ -56,7 +105,3 @@ $closeModal.addEventListener("click", (e) => {
     $formFlashcard.classList.add("hidden");
     $overlay.classList.remove("visible")
 })
-
-window.onload = () => {
-
-}

@@ -18,8 +18,12 @@ switch ($_POST["method"]) {
             echo json_encode (array("status"=>false,"mensaje"=>"completa todos los campos"));
         }
         break;
+    case 'getTopics':
+        echo json_encode($controller->getTopics());
+        break;
     
 }
+// echo json_encode($controller->login("yaider","123"));
 // funcion para validar si los campos no estan vacios
 function validarDatos(...$data){
     foreach ($data as $key ) {
