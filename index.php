@@ -107,35 +107,7 @@
     <!-- flashcards -->
     <main class="mg-top container" id="main">
     <div class="container_flashcards scroll" >
-        <div class="flashcard" >
-            <div class="face anverse">
-              <div class="flashcards_settings">
-                  <a href="#" class="settings btn_palette" >
-                      <ion-icon name="color-palette"></ion-icon>
-                  </a>
-                  <a href="#" class="btn_rotate">
-                      <ion-icon name="refresh-outline"></ion-icon>
-                  </a>
-                  <a href="#" class="settings btn_delete" >
-                      <ion-icon name="trash-outline"></ion-icon>
-                  </a>
-              </div>
-              <div class="inpt_question">
-              <p>pregunta.</p>
-              </div>
-          </div>
-          <div class="face overse">
-            <div class="flashcards_settings">
-                <a href="#" class="btn_rotate back">
-                    <ion-icon name="refresh-outline"></ion-icon>
-                </a>
-            </div>
-            <div class="inpt_question">
-                <p>respuesta.</p>
-            </div>
-          </div>
-          
-        </div>
+        
     </div>
       <!-- <div class="not-found">
         <span><ion-icon name="search-outline"></ion-icon></span>
@@ -209,6 +181,7 @@
             <div class="input input_modal">
               <label for="question">ingrese la pregunta</label>
               <input
+              name="anverso"
                 type="text"
                 id="question"
                 placeholder="EJ: Planeta Mas Grande Del Sistema Solar"
@@ -217,6 +190,7 @@
             <div class="input input_modal">
               <label for="answer">ingrese la respuesta</label>
               <textarea
+              name="reverso"
                 type="text"
                 id="answer"
                 placeholder="EJ: jupiter"
@@ -224,7 +198,7 @@
             </div>
             <div class="input input_modal">
               <label for="answer">elija un color</label>
-              <input type="color" class="input_color" />
+              <input type="color" class="input_color" name="color"/>
             </div>
             <div class="btn_submit">
               <ion-icon name="save"></ion-icon>

@@ -23,7 +23,12 @@ switch ($_POST["method"]) {
         break;
     case 'getFlashcards':
         echo json_encode($controller->getFlashcards($_POST["id"]));
-        
+        break;
+    case 'deleteFlashcard':
+        echo json_encode($controller->deleteFlashcard($_POST["id"]));
+        break;
+    case 'addFlashcard':
+        echo json_encode($controller->addFlashcard($_POST["color"],$_POST["anverso"],$_POST["reverso"]));
         break;
 }
 // funcion para validar si los campos no estan vacios

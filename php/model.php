@@ -32,7 +32,7 @@ class model {
             $sql->execute();
             return array("status"=>true);
         } catch (\Throwable $th) {
-            return array("response"=>http_response_code(400),"status"=>true);
+            return array("response"=>http_response_code(400),"status"=>false);
         }
         
     }
@@ -54,6 +54,30 @@ class model {
             return array("status"=>true,"data"=>$sql->fetchAll());
         }else{
             return array("status"=>false);
+        }
+    }
+    function deleteFlashcard($id){
+        $query= "DELETE FROM `flashcard` WHERE id_card=$id";
+        $sql=$this->con->prepare($query);
+        $sql->execute();
+        try {
+            $sql->execute();
+            return array("status"=>true);
+        } catch (\Throwable $th) {
+            return array("status"=>false);
+        }
+    }
+    function newFlashcard($color,$anverso,$reverso){
+        $query= "INSERT INTO `flashcard`(`color`, `anverso`, `reverso`) VALUES (?,?,?)";
+        $sql=$this->con->prepare($query);
+        $sql->bindParam(1,$color);
+        $sql->bindParam(2,$anverso);
+        $sql->bindParam(3,$reverso);
+        try {
+            $sql->execute();
+            return array("status"=>true);
+        } catch (\Throwable $th) {
+            return array("response"=>http_response_code(400),"status"=>false);
         }
     }
 }

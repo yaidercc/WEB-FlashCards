@@ -17,4 +17,10 @@ class Controller{
     public function getFlashcards($id){
         return $this->model->Flashcards($id);
     }
+    public function deleteFlashcard($id){
+        return $this->model->deleteFlashcard($id);
+    }
+    public function addFlashcard($color,$anverso,$reverso){
+        return $this->model->newFlashcard($color,$anverso,$reverso);
+    }
 }

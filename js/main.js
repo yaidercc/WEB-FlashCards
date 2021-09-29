@@ -11,6 +11,7 @@ const $formTopic = document.getElementById("form_topic");
 const $formFlashcard = document.getElementById("form_flashcards");
 const $containerTopics = document.getElementById("topics_container");
 const $main = document.getElementById("main");
+
 // functions
 
 // peticiones
@@ -45,36 +46,42 @@ function eventoTopics() {
 }
 // rotar flashcards
 function rotateFlashcards() {
+    // flashcards y sus botones de rotar
     const $rotateFlashcard = Array.from(document.getElementsByClassName("btn_rotate"));
     const $rotateBackFlashcard = Array.from(document.getElementsByClassName("back"));
     const $flashcards = Array.from(document.getElementsByClassName("flashcard"));
+    // boton de eliminar
+    const $btnDeleteCard = document.getElementById("delete-card");
+    // eventos para rotar
     $rotateFlashcard.forEach(el => {
-        el.addEventListener("click", function () {
-            alert("hola")
+        el.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.preventDefault();
+            for (const j of $flashcards) {
+                if (j.classList.contains("rotate")) {
+                    j.classList.remove("rotate");
+                }
+            }
+            let parent = el.parentNode.parentNode.parentNode;
+            parent.classList.toggle("rotate");
         })
     })
-    // for (const i of $rotateFlashcard) {
-    //     i.addEventListener("click", (e) => {
-    //         alert("hola")
-    //         e.preventDefault();
-    //         for (const j of $flashcards) {
-
-    //             if (j.classList.contains("rotate")) {
-    //                 j.classList.remove("rotate");
-    //             }
-    //         }
-    //         let parent = i.parentNode.parentNode.parentNode;
-    //         parent.classList.toggle("rotate");
-
-    //     })
-    // }
-    // for (const i of $rotateBackFlashcard) {
-    //     i.addEventListener("click", (e) => {
-    //         e.preventDefault();
-    //         let parent = i.parentNode.parentNode.parentNode;
-    //         parent.classList.remove("rotate");
-    //     })
-    // }
+    $rotateBackFlashcard.forEach(el => {
+        el.addEventListener("click", (e) => {
+            e.preventDefault();
+            let parent = el.parentNode.parentNode.parentNode;
+            parent.classList.remove("rotate");
+        })
+    })
+    // evento para eliminar flashcard
+    $btnDeleteCard.addEventListener("click", (e) => {
+        e.preventDefault();
+        let id = new FormData();
+        id.append("id", document.getElementById("delete-card").getAttribute("data-id"));
+        peticion("deleteFlashcard", id).then((data) => {
+            console.log(data.status)
+        }).catch(err => console.error(err))
+    })
 }
 // traer flashcards
 function getFlashcards() {
@@ -98,7 +105,7 @@ function getFlashcards() {
                                 <a href="#" class="btn_rotate">
                                     <ion-icon name="refresh-outline"></ion-icon>
                                 </a>
-                                <a href="#" class="settings btn_delete" >
+                                <a href="#" class="settings btn_delete" id="delete-card" data-id=${key.id_card}>
                                     <ion-icon name="trash-outline"></ion-icon>
                                 </a>
                             </div>
@@ -122,7 +129,8 @@ function getFlashcards() {
                     flashcards += `</div>`;
 
                     $main.innerHTML = flashcards;
-                    rotateFlashcards()
+                    setTimeout(() => rotateFlashcards(), 1000)
+
                 } else {
                     $main.innerHTML = `
                     <div class="not-found">
@@ -142,16 +150,17 @@ function getFlashcards() {
                 console.log(err);
             })
     } else {
-
+        $main.innerHTML = `
+                    <div class="not-found">
+                        <span><ion-icon name="search-outline"></ion-icon></span>
+                        <p>No has seleccionado un temario</p>
+                    </div>`
     }
 }
-// SELECT * FROM flashcard f inner join flashcard_tema ft on ft.id_flashcard=f.id_card where ft.id_tema=1
 // traer temarios
 function showTopics() {
     peticion("getTopics").then(data => {
-
         if (data.status) {
-            console.log(data);
             let topics = `<ul class="list_topics">`
             const arr = [...data.data];
             for (const key of arr) {
@@ -179,6 +188,7 @@ function showTopics() {
 
 window.onload = () => {
     showTopics();
+    getFlashcards();
 }
 
 $openModalTopic.addEventListener("click", (e) => {
@@ -199,7 +209,10 @@ $closeModal.addEventListener("click", (e) => {
     $formFlashcard.classList.add("hidden");
     $overlay.classList.remove("visible")
 })
-let b = new FormData()
-b.append("ac", 2)
-let a = new FormData();
-a.append("datos", b.get("ac"));
+$formFlashcard.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let dataFlahscard = new FormData($formFlashcard);
+    peticion("addFlashcard", dataFlahscard).then(data => {
+        console.log(data.status);
+    });
+})
