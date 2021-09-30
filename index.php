@@ -55,7 +55,7 @@
       </div>
     </header>
     <!-- section managment flahscards -->
-    <section class="mg-top container">
+    <section class="mg-top container" >
       <!-- submenu topics -->
       <ul class="container_list-topics">
         <li class="btn_open-topics" id="btn_open-topics">
@@ -87,8 +87,8 @@
         </li>
       </ul>
       <!-- flascards managment -->
-      <h2 id="topic_title">El Principito</h2>
-      <div class="flashcard_customize">
+      <h2 id="topic_title"></h2>
+      <div class="flashcard_customize" id="flashcard_customize">
         <a href="#" class="btn btn_primary" id="btn_new-flashcard">
           <ion-icon name="add-outline"></ion-icon>
           <span>nueva flashcard</span>

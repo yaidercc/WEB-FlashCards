@@ -11,6 +11,8 @@ const $formTopic = document.getElementById("form_topic");
 const $formFlashcard = document.getElementById("form_flashcards");
 const $containerTopics = document.getElementById("topics_container");
 const $main = document.getElementById("main");
+const $customizeFlashcard = document.getElementById("flashcard_customize");
+const $tituloTopic = document.getElementById("topic_title");
 
 // functions
 
@@ -36,13 +38,16 @@ function peticion(metodo, param) {
 // aplicar eventos a la lista de temas
 function eventoTopics() {
     const topics = Array.from(document.getElementsByClassName("topic"));
+    // 
     topics.forEach((el) => {
         el.addEventListener("click", () => {
             localStorage.setItem("topic", Array.from(el.childNodes)[1].textContent)
             localStorage.setItem("id", el.getAttribute("data-id"))
             getFlashcards();
+            $customizeFlashcard.classList.remove("hide");
         })
     })
+
 }
 // rotar flashcards
 function rotateFlashcards() {
@@ -50,6 +55,7 @@ function rotateFlashcards() {
     const $rotateFlashcard = Array.from(document.getElementsByClassName("btn_rotate"));
     const $rotateBackFlashcard = Array.from(document.getElementsByClassName("back"));
     const $flashcards = Array.from(document.getElementsByClassName("flashcard"));
+
     // boton de eliminar
     const $btnDeleteCard = document.getElementById("delete-card");
     // eventos para rotar
@@ -79,19 +85,43 @@ function rotateFlashcards() {
         let id = new FormData();
         id.append("id", document.getElementById("delete-card").getAttribute("data-id"));
         peticion("deleteFlashcard", id).then((data) => {
-            console.log(data.status)
+
+            getFlashcards()
+
         }).catch(err => console.error(err))
+    })
+
+}
+
+function eventoDeleteTopic() {
+    const $deleteTopic = document.getElementById("delete_topic");
+    $deleteTopic.addEventListener("click", (e) => {
+        e.preventDefault();
+        let dataFlahscard = new FormData();
+        dataFlahscard.append("id_temario", localStorage.getItem("id"))
+        peticion("deleteTopic", dataFlahscard).then(data => {
+            if (data.status) {
+                localStorage.removeItem("id")
+                localStorage.removeItem("topic")
+                $tituloTopic.textContent = "";
+                showTopics();
+                getFlashcards();
+            } else {
+                console.log(data.status)
+            }
+        });
     })
 }
 // traer flashcards
 function getFlashcards() {
     if (localStorage.getItem("id")) {
+        $tituloTopic.textContent = localStorage.getItem("topic");
         let id = new FormData();
         id.append("id", localStorage.getItem("id"));
         peticion("getFlashcards", id)
             .then(data => {
                 if (data.status) {
-                    console.log(data)
+                    $customizeFlashcard.classList.remove("hide");
                     let flashcards = `<div class="container_flashcards scroll">`
                     const arr = [...data.data];
                     for (const key of arr) {
@@ -127,9 +157,9 @@ function getFlashcards() {
                         </div>`;
                     }
                     flashcards += `</div>`;
-
-                    $main.innerHTML = flashcards;
                     setTimeout(() => rotateFlashcards(), 1000)
+                    $main.innerHTML = flashcards;
+
 
                 } else {
                     $main.innerHTML = `
@@ -141,20 +171,25 @@ function getFlashcards() {
                 }
                 $main.innerHTML += `
                 <div class="delete_topic">
-                    <a href="#" class="btn btn_secundary">
+                    <a href="#" class="btn btn_secundary" id="delete_topic" >
                     <ion-icon name="trash-outline"></ion-icon>
                     <span>eliminar temario</span>
                     </a>
-                </div>`
+                </div>`;
+                eventoDeleteTopic();
+
             }).catch(err => {
                 console.log(err);
             })
     } else {
+        // oculta las gestiones de flashcards
+        $customizeFlashcard.classList.add("hide");
+        // muestra el aviso de que no hay flashcard
         $main.innerHTML = `
                     <div class="not-found">
                         <span><ion-icon name="search-outline"></ion-icon></span>
                         <p>No has seleccionado un temario</p>
-                    </div>`
+                    </div>`;
     }
 }
 // traer temarios
@@ -185,7 +220,6 @@ function showTopics() {
     }).catch()
 }
 // Events
-
 window.onload = () => {
     showTopics();
     getFlashcards();
@@ -212,7 +246,10 @@ $closeModal.addEventListener("click", (e) => {
 $formFlashcard.addEventListener("submit", (e) => {
     e.preventDefault();
     let dataFlahscard = new FormData($formFlashcard);
-    peticion("addFlashcard", dataFlahscard).then(data => {
-        console.log(data.status);
+    dataFlahscard.append("id_temario", localStorage.getItem("id"))
+    peticion("deleteTopic", dataFlahscard).then(data => {
+        if (data.status) {
+            getFlashcards();
+        }
     });
 })

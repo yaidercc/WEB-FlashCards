@@ -20,7 +20,10 @@ class Controller{
     public function deleteFlashcard($id){
         return $this->model->deleteFlashcard($id);
     }
-    public function addFlashcard($color,$anverso,$reverso){
-        return $this->model->newFlashcard($color,$anverso,$reverso);
+    public function addFlashcard($color,$anverso,$reverso,$temario){
+        return $this->model->newFlashcard($color,$anverso,$reverso,$temario);
+    }
+    public function delTopic($id){
+        return $this->model->deleteTopic($id);
     }
 }

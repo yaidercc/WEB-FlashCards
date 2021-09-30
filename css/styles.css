@@ -112,6 +112,7 @@ input:not(input[type=submit]) {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: 6rem 0;
   color: #9b9999;
 }
 .not-found p {
@@ -297,6 +298,8 @@ input:not(input[type=submit]) {
 
 .topics_container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 20rem;
   overflow-y: auto;
 }

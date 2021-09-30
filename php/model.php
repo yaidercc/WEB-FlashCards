@@ -37,7 +37,7 @@ class model {
         
     }
     function Topics(){
-        $query= "SELECT * FROM `tema` WHERE  `id_usuario`=  $_SESSION[id_user]";
+        $query= "SELECT * FROM `tema` WHERE  `id_usuario`=  $_SESSION[id_user] and estado=1";
         $sql=$this->con->prepare($query);
         $sql->execute();
         if($sql->rowCount()>0){
@@ -47,7 +47,7 @@ class model {
         }
     }
     function Flashcards($id){
-        $query= "SELECT f.anverso,f.reverso,f.id_card FROM `flashcard` f inner join `flashcard_tema` ft on ft.id_flashcard=f.id_card where ft.id_tema=$id";
+        $query= "SELECT * FROM flashcard WHERE id_tema_fk=$id";
         $sql=$this->con->prepare($query);
         $sql->execute();
         if($sql->rowCount()>0){
@@ -67,17 +67,29 @@ class model {
             return array("status"=>false);
         }
     }
-    function newFlashcard($color,$anverso,$reverso){
-        $query= "INSERT INTO `flashcard`(`color`, `anverso`, `reverso`) VALUES (?,?,?)";
+    function newFlashcard($color,$anverso,$reverso,$tema){
+        $query= "INSERT INTO `flashcard`(`color`, `anverso`, `reverso`,`id_tema_fk`) VALUES (?,?,?,?)";
         $sql=$this->con->prepare($query);
         $sql->bindParam(1,$color);
         $sql->bindParam(2,$anverso);
         $sql->bindParam(3,$reverso);
+        $sql->bindParam(4,$tema);
+        try {
+            $sql->execute();
+            return array("status"=>true);
+        } catch (\Throwable $th) { 
+            return array("response"=>http_response_code(400),"status"=>false);
+        }
+    }
+    function deleteTopic($id){
+        $query= "UPDATE `tema` SET `estado`=0 WHERE id=$id";
+        $sql=$this->con->prepare($query);
+        $sql->execute();
         try {
             $sql->execute();
             return array("status"=>true);
         } catch (\Throwable $th) {
-            return array("response"=>http_response_code(400),"status"=>false);
+            return array("status"=>false);
         }
     }
 }
