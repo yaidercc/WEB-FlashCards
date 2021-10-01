@@ -169,7 +169,7 @@
           <form action="#" class="form hidden" id="form_topic">
             <div class="input input_modal">
               <label for="topic">ingresa el nombre del temario</label>
-              <input type="text" id="topic" placeholder="EJ: matematicas" />
+              <input type="text" id="topic" name="temario" placeholder="EJ: matematicas"  required >
             </div>
             <div class="btn_submit">
               <ion-icon name="save"></ion-icon>

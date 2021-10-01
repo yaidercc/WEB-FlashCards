@@ -92,4 +92,16 @@ class model {
             return array("status"=>false);
         }
     }
+    function addTopic($tema){
+        $query= "INSERT INTO `tema`(`tema`, `id_usuario`) VALUES (?,?)";
+        $sql=$this->con->prepare($query);
+        $sql->bindParam(1,$tema);
+        $sql->bindParam(2,$_SESSION["id_user"]);
+        try {
+            $sql->execute();
+            return array("status"=>true);
+        } catch (\Throwable $th) { 
+            return array("response"=>http_response_code(400),"status"=>false);
+        }
+    }
 }

@@ -55,9 +55,8 @@ function rotateFlashcards() {
     const $rotateFlashcard = Array.from(document.getElementsByClassName("btn_rotate"));
     const $rotateBackFlashcard = Array.from(document.getElementsByClassName("back"));
     const $flashcards = Array.from(document.getElementsByClassName("flashcard"));
-
     // boton de eliminar
-    const $btnDeleteCard = document.getElementById("delete-card");
+    const $btnDeleteCard = Array.from(document.getElementsByClassName("btn_delete"));
     // eventos para rotar
     $rotateFlashcard.forEach(el => {
         el.addEventListener("click", (e) => {
@@ -80,17 +79,17 @@ function rotateFlashcards() {
         })
     })
     // evento para eliminar flashcard
-    $btnDeleteCard.addEventListener("click", (e) => {
-        e.preventDefault();
-        let id = new FormData();
-        id.append("id", document.getElementById("delete-card").getAttribute("data-id"));
-        peticion("deleteFlashcard", id).then((data) => {
 
-            getFlashcards()
-
-        }).catch(err => console.error(err))
+    $btnDeleteCard.forEach((el) => {
+        el.addEventListener("click", (e) => {
+            e.preventDefault();
+            let id = new FormData();
+            id.append("id", el.getAttribute("data-id"));
+            peticion("deleteFlashcard", id).then((data) => {
+                getFlashcards()
+            }).catch(err => console.error(err))
+        })
     })
-
 }
 
 function eventoDeleteTopic() {
@@ -135,7 +134,7 @@ function getFlashcards() {
                                 <a href="#" class="btn_rotate">
                                     <ion-icon name="refresh-outline"></ion-icon>
                                 </a>
-                                <a href="#" class="settings btn_delete" id="delete-card" data-id=${key.id_card}>
+                                <a href="#" class="settings btn_delete" data-id=${key.id_card}>
                                     <ion-icon name="trash-outline"></ion-icon>
                                 </a>
                             </div>
@@ -157,7 +156,7 @@ function getFlashcards() {
                         </div>`;
                     }
                     flashcards += `</div>`;
-                    setTimeout(() => rotateFlashcards(), 1000)
+                    setTimeout(() => rotateFlashcards(), 10)
                     $main.innerHTML = flashcards;
 
 
@@ -230,6 +229,27 @@ $openModalTopic.addEventListener("click", (e) => {
     $overlay.classList.add("visible")
     $titleModal.textContent = "agregar temario";
     $formTopic.classList.remove("hidden");
+
+})
+$formTopic.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let dataTopic = new FormData($formTopic);
+    let validacion = true;
+    dataTopic.forEach(el => {
+        if (el.trim() === "") {
+            validacion = false;
+        }
+    })
+    if (validacion) {
+        peticion("addTopic", dataTopic).then(data => {
+            if (data.status) {
+                showTopics();
+                getFlashcards();
+            }
+        });
+    } else {
+        alert("llene todos los campos")
+    }
 })
 $openModalFlashcard.addEventListener("click", (e) => {
     e.preventDefault();
@@ -247,7 +267,7 @@ $formFlashcard.addEventListener("submit", (e) => {
     e.preventDefault();
     let dataFlahscard = new FormData($formFlashcard);
     dataFlahscard.append("id_temario", localStorage.getItem("id"))
-    peticion("deleteTopic", dataFlahscard).then(data => {
+    peticion("addFlashcard", dataFlahscard).then(data => {
         if (data.status) {
             getFlashcards();
         }

@@ -26,4 +26,7 @@ class Controller{
     public function delTopic($id){
         return $this->model->deleteTopic($id);
     }
+    public function addTopic($tema){
+        return $this->model->addTopic($tema);
+    }
 }

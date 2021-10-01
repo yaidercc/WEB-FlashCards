@@ -33,6 +33,9 @@ switch ($_POST["method"]) {
     case 'deleteTopic':
         echo json_encode($controller->delTopic($_POST["id_temario"]));
         break;
+    case 'addTopic':
+        echo json_encode($controller->addTopic($_POST["temario"]));
+        break;
 }
 // funcion para validar si los campos no estan vacios
 function validarDatos(...$data){
