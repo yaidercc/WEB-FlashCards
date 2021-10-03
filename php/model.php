@@ -104,4 +104,25 @@ class model {
             return array("response"=>http_response_code(400),"status"=>false);
         }
     }
+    function getInfoCard($id){
+        $query= "SELECT * FROM flashcard WHERE id_card=$id";
+        $sql=$this->con->prepare($query);
+        $sql->execute();
+        if($sql->rowCount()>0){
+            return array("status"=>true,"data"=>$sql->fetchAll());
+        }else{
+            return array("status"=>false);
+        }
+    }
+    function updateFlashcard($id,$anverso,$reverso,$color){
+        $query= "UPDATE `flashcard` SET `color`='$color',`anverso`='$anverso',`reverso`='$reverso' WHERE id_card=$id";
+        $sql=$this->con->prepare($query);
+        $sql->execute();
+        try {
+            $sql->execute();
+            return array("status"=>true);
+        } catch (\Throwable $th) {
+            return array("status"=>false);
+        }
+    }
 }

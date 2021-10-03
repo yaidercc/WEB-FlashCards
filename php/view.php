@@ -36,6 +36,12 @@ switch ($_POST["method"]) {
     case 'addTopic':
         echo json_encode($controller->addTopic($_POST["temario"]));
         break;
+    case 'getInfoCard':
+        echo json_encode($controller->getInfoCard($_POST["id"]));
+        break;
+    case 'updateFlashcard':
+        echo json_encode($controller->updateFlashcard($_POST["id"],$_POST["anverso"],$_POST["reverso"],$_POST["color"]));
+        break;
 }
 // funcion para validar si los campos no estan vacios
 function validarDatos(...$data){

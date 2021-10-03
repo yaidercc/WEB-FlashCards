@@ -15,6 +15,8 @@ const $customizeFlashcard = document.getElementById("flashcard_customize");
 const $tituloTopic = document.getElementById("topic_title");
 const $searchFlaschard = document.getElementById("search_flashcard");
 const $searchTopics = document.getElementById("search_topics");
+const $formChangeFlashcard = document.getElementById("form_change_flashcards");
+const $formsModal = Array.from(document.getElementsByClassName("form"))
 /* *** FUNCTIONS *** */
 
 // Requests to the bd
@@ -60,9 +62,7 @@ function eventoTopics() {
             localStorage.setItem("id", el.getAttribute("data-id"))
             // remove class active
             topics.forEach((ele) => {
-
                 ele.classList.remove("active");
-
             })
             // add class actove
             el.classList.add("active")
@@ -81,6 +81,7 @@ function flashcardsEvents() {
     const $rotateBackFlashcard = Array.from(document.getElementsByClassName("back"));
     const $flashcards = Array.from(document.getElementsByClassName("flashcard"));
     const $btnDeleteCard = Array.from(document.getElementsByClassName("btn_delete"));
+    const $btnChangeFlashcard = Array.from(document.getElementsByClassName("btn_change"));
     // rotate flashcard events
     $rotateFlashcard.forEach(el => {
         el.addEventListener("click", (e) => {
@@ -128,6 +129,31 @@ function flashcardsEvents() {
                         getFlashcards()
                     }).catch(err => console.error(err))
                 }
+            })
+
+        })
+    })
+    // change flashcard event
+    $btnChangeFlashcard.forEach(el => {
+        el.addEventListener("click", (e) => {
+            e.preventDefault();
+            $overlay.classList.add("visible")
+            $titleModal.textContent = "Modificar Flashcard";
+            $formChangeFlashcard.classList.remove("hidden");
+            // select parent element
+            let childElements = el.parentNode.parentNode.parentNode;
+            let id = new FormData();
+            id.append("id", childElements.getAttribute("data-id"))
+            // call peticion method
+            peticion("getInfoCard", id).then(data => {
+                const arr = [...data.data];
+                // set values on inputs
+                document.getElementById("question_change").value = arr[0].anverso;
+                document.getElementById("answer_change").value = arr[0].reverso;
+                document.getElementById("color_change").value = arr[0].color;
+                document.getElementById("id_card").value = arr[0].id_card;
+            }).catch(err => {
+                console.log(err)
             })
 
         })
@@ -216,8 +242,8 @@ function getFlashcards(like = "") {
                             <div class="flashcard" data-id=${key.id_card} style="background-color:${key.color}">
                             <div class="face anverse">
                             <div class="flashcards_settings">
-                                <a href="#" class="settings btn_palette" >
-                                    <ion-icon name="color-palette"></ion-icon>
+                                <a href="#" class="settings btn_change">
+                                    <ion-icon name="pencil-outline"></ion-icon>
                                 </a>
                                 <a href="#" class="btn_rotate">
                                     <ion-icon name="refresh-outline"></ion-icon>
@@ -385,7 +411,9 @@ $openModalFlashcard.addEventListener("click", (e) => {
 $closeModal.addEventListener("click", (e) => {
     e.preventDefault();
     $formTopic.classList.add("hidden");
-    $formFlashcard.classList.add("hidden");
+    $formsModal.forEach(el => {
+        el.classList.add("hidden");
+    })
     $overlay.classList.remove("visible")
 })
 // form flashcard event
@@ -411,4 +439,18 @@ $searchFlaschard.addEventListener("input", (e) => {
 $searchTopics.addEventListener("input", (e) => {
     e.preventDefault();
     showTopics($searchTopics.value)
+})
+$formChangeFlashcard.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let dataFlahscard = new FormData($formChangeFlashcard);
+    // call peticion method
+    peticion("updateFlashcard", dataFlahscard).then(data => {
+        if (data.status) {
+            // refresh flashcards
+            getFlashcards();
+            // $formChangeFlashcard.reset();
+        } else {
+            alert("mal")
+        }
+    }).catch(err => console.error(err));
 })

@@ -210,6 +210,7 @@
           </form>
           <!-- change flashcard -->
           <form action="#" class="hidden form" id="form_change_flashcards">
+            <input type="hidden" name="id" id="id_card">
             <div class="input input_modal">
               <label for="question">ingrese la pregunta</label>
               <input

@@ -462,7 +462,7 @@ input:not(input[type=submit]) {
   align-items: center;
   justify-content: center;
 }
-.flashcards_settings .btn_palette {
+.flashcards_settings .btn_change {
   left: 0;
   background-color: #337DEC;
 }

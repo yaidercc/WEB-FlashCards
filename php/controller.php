@@ -29,4 +29,10 @@ class Controller{
     public function addTopic($tema){
         return $this->model->addTopic($tema);
     }
+    public function getInfoCard($id){
+        return $this->model->getInfoCard($id);
+    }
+    public function updateFlashcard($id,$anverso,$reverso,$color){
+        return $this->model->updateFlashcard($id,$anverso,$reverso,$color);
+    }
 }
