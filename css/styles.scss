@@ -141,6 +141,7 @@ input:not(input[type="submit"]) {
 }
 
 .btn.btn_secundary {
+    margin-top: 2rem;
     color: $deleteColor;
     outline: 2px solid $deleteColor;
 
@@ -522,8 +523,7 @@ input:not(input[type="submit"]) {
 }
 
 .delete_topic {
-    margin-top: 2rem;
-
+   
     .btn_delete-topic {
         width: 100%;
     }

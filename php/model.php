@@ -51,6 +51,7 @@ class model {
         $sql=$this->con->prepare($query);
         $sql->execute();
         if($sql->rowCount()>0){
+            
             return array("status"=>true,"data"=>$sql->fetchAll());
         }else{
             return array("status"=>false);

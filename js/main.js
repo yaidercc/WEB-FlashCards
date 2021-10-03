@@ -100,26 +100,30 @@ function eventoDeleteTopic() {
         dataFlahscard.append("id_temario", localStorage.getItem("id"))
         peticion("deleteTopic", dataFlahscard).then(data => {
             if (data.status) {
-                localStorage.removeItem("id")
-                localStorage.removeItem("topic")
+                localStorage.clear();
                 $tituloTopic.textContent = "";
                 showTopics();
-                getFlashcards();
+                getFlashcards()
+
             } else {
                 console.log(data.status)
             }
         });
     })
+
+
 }
 // traer flashcards
 function getFlashcards() {
     if (localStorage.getItem("id")) {
+
         $tituloTopic.textContent = localStorage.getItem("topic");
         let id = new FormData();
         id.append("id", localStorage.getItem("id"));
         peticion("getFlashcards", id)
             .then(data => {
                 if (data.status) {
+                    alert("cual es el pedo?")
                     $customizeFlashcard.classList.remove("hide");
                     let flashcards = `<div class="container_flashcards scroll">`
                     const arr = [...data.data];
@@ -156,21 +160,19 @@ function getFlashcards() {
                         </div>`;
                     }
                     flashcards += `</div>`;
-                    setTimeout(() => rotateFlashcards(), 10)
+                    setTimeout(() => rotateFlashcards(), 10);
                     $main.innerHTML = flashcards;
-
 
                 } else {
                     $main.innerHTML = `
                     <div class="not-found">
                         <span><ion-icon name="search-outline"></ion-icon></span>
                         <p>No tienes flashcards</p>
-                    </div>`
-
+                    </div>`;
                 }
                 $main.innerHTML += `
                 <div class="delete_topic">
-                    <a href="#" class="btn btn_secundary" id="delete_topic" >
+                    <a href="#" class="btn btn_secundary " id="delete_topic">
                     <ion-icon name="trash-outline"></ion-icon>
                     <span>eliminar temario</span>
                     </a>
@@ -201,7 +203,7 @@ function showTopics() {
                 topics += `
                 <li class="topic" data-id=${key.id}>
                   <span>${key.tema}</span>
-                  <a href="#">
+                  <a href="#" class="delete_topic" data-id=${key.id} style="display:none;">
                     <ion-icon name="trash-outline"></ion-icon>
                   </a>
                 </li>`;
@@ -270,6 +272,8 @@ $formFlashcard.addEventListener("submit", (e) => {
     peticion("addFlashcard", dataFlahscard).then(data => {
         if (data.status) {
             getFlashcards();
+        } else {
+            alert("mal")
         }
     });
 })

@@ -164,6 +164,7 @@ input:not(input[type=submit]) {
 }
 
 .btn.btn_secundary {
+  margin-top: 2rem;
   color: #F33535;
   outline: 2px solid #F33535;
 }
@@ -473,9 +474,6 @@ input:not(input[type=submit]) {
   color: #ffff;
 }
 
-.delete_topic {
-  margin-top: 2rem;
-}
 .delete_topic .btn_delete-topic {
   width: 100%;
 }
