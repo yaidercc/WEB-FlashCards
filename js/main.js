@@ -1,4 +1,4 @@
-// variables
+/* *** VARIABLES *** */
 const $btnOpenTopics = document.getElementById("btn_open-topics");
 const $lisTopics = document.getElementById("submenu_topics");
 const $openModalTopic = document.getElementById("btn_new-Topic");
@@ -14,11 +14,13 @@ const $main = document.getElementById("main");
 const $customizeFlashcard = document.getElementById("flashcard_customize");
 const $tituloTopic = document.getElementById("topic_title");
 
-// functions
+/* *** FUNCTIONS *** */
 
-// peticiones
+// Requests to the bd
 function peticion(metodo, param) {
+    // create new formdata
     let data = new FormData();
+    // add method
     data.append("method", metodo)
     if (param) {
         param.forEach((el, i) => {
@@ -26,38 +28,44 @@ function peticion(metodo, param) {
         })
 
     }
-    let topics = fetch("https://localhost/Mis%20Proyectos/En%20proceso/FlashCards-v2/php/view.php", {
+    // requests to de view source
+    let response = fetch("https://localhost/Mis%20Proyectos/En%20proceso/FlashCards-v2/php/view.php", {
             method: "POST",
             body: data
         })
+        // convert data in json
         .then(resp => resp.json())
         .then(data => data)
         .catch(err => err)
-    return topics;
+    // return data
+    return response;
 }
-// aplicar eventos a la lista de temas
+
+
+// topics events
 function eventoTopics() {
     const topics = Array.from(document.getElementsByClassName("topic"));
-    // 
     topics.forEach((el) => {
         el.addEventListener("click", () => {
+            // add the name and the id to localstorage
             localStorage.setItem("topic", Array.from(el.childNodes)[1].textContent)
             localStorage.setItem("id", el.getAttribute("data-id"))
+            // call getFlashcards method
             getFlashcards();
+            // shows customizeFlashcard 
             $customizeFlashcard.classList.remove("hide");
         })
     })
 
 }
-// rotar flashcards
-function rotateFlashcards() {
-    // flashcards y sus botones de rotar
+// flashcards events
+function flashcardsEvents() {
+    // flashcards btns
     const $rotateFlashcard = Array.from(document.getElementsByClassName("btn_rotate"));
     const $rotateBackFlashcard = Array.from(document.getElementsByClassName("back"));
     const $flashcards = Array.from(document.getElementsByClassName("flashcard"));
-    // boton de eliminar
     const $btnDeleteCard = Array.from(document.getElementsByClassName("btn_delete"));
-    // eventos para rotar
+    // rotate flashcard events
     $rotateFlashcard.forEach(el => {
         el.addEventListener("click", (e) => {
             e.preventDefault();
@@ -78,8 +86,8 @@ function rotateFlashcards() {
             parent.classList.remove("rotate");
         })
     })
-    // evento para eliminar flashcard
 
+    // delete event
     $btnDeleteCard.forEach((el) => {
         el.addEventListener("click", (e) => {
             e.preventDefault();
@@ -94,13 +102,19 @@ function rotateFlashcards() {
 
 
 function eventoDeleteTopic() {
+    // delete topic btn
     const $deleteTopic = document.getElementById("delete_topic");
+    // event
     $deleteTopic.addEventListener("click", (e) => {
         e.preventDefault();
+        // creates formData
         let dataFlahscard = new FormData();
+        // adds id_temario
         dataFlahscard.append("id_temario", localStorage.getItem("id"))
+        // call peticion method
         peticion("deleteTopic", dataFlahscard).then(data => {
             if (data.status) {
+                // questions if you wnat delete hat topic
                 Swal.fire({
                     title: 'Deseas eliminar este temario?',
                     text: "",
@@ -110,11 +124,17 @@ function eventoDeleteTopic() {
                     cancelButtonColor: '#d33',
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
+                    // if you accept
                     if (result.isConfirmed) {
+                        // clear localstorage
                         localStorage.clear();
+                        // clear the title
                         $tituloTopic.textContent = "";
+                        // call topics method
                         showTopics();
+                        // call getFLashcard method
                         getFlashcards()
+                        // confirmation alert
                         Swal.fire({
                             position: 'bottom-end',
                             icon: 'success',
@@ -122,33 +142,40 @@ function eventoDeleteTopic() {
                             showConfirmButton: false,
                             timer: 2000
                         })
-
                     }
                 })
 
             } else {
-                console.log(data.status)
+                // if data.status is false print data
+                console.log(data)
             }
         });
     })
 
 
 }
-// traer flashcards
+// get flashcards
 function getFlashcards() {
+    // validates if id element exists
     if (localStorage.getItem("id")) {
-
+        // set title 
         $tituloTopic.textContent = localStorage.getItem("topic");
+        // creates new formdata
         let id = new FormData();
+        // adds id to the formdata
         id.append("id", localStorage.getItem("id"));
+        // call peticion method
         peticion("getFlashcards", id)
             .then(data => {
                 if (data.status) {
-                    alert("cual es el pedo?")
+                    // shows customizeFlashcard 
                     $customizeFlashcard.classList.remove("hide");
+                    // create flashcards div
                     let flashcards = `<div class="container_flashcards scroll">`
+                    // convert data in array
                     const arr = [...data.data];
                     for (const key of arr) {
+                        // create flashcards elements
                         flashcards += `
                             <div class="flashcard" data-id=${key.id_card}>
                             <div class="face anverse">
@@ -181,16 +208,20 @@ function getFlashcards() {
                         </div>`;
                     }
                     flashcards += `</div>`;
-                    setTimeout(() => rotateFlashcards(), 10);
+                    // call flashcardsEvents
+                    setTimeout(() => flashcardsEvents(), 10);
+                    // add flashcards to the main element
                     $main.innerHTML = flashcards;
 
                 } else {
+                    // if there aren´t flashcards 
                     $main.innerHTML = `
                     <div class="not-found">
                         <span><ion-icon name="search-outline"></ion-icon></span>
                         <p>No tienes flashcards</p>
                     </div>`;
                 }
+                // add delete topics button
                 $main.innerHTML += `
                 <div class="delete_topic">
                     <a href="#" class="btn btn_secundary " id="delete_topic">
@@ -198,15 +229,15 @@ function getFlashcards() {
                     <span>eliminar temario</span>
                     </a>
                 </div>`;
+                // call deleteTopic event
                 eventoDeleteTopic();
-
             }).catch(err => {
                 console.log(err);
             })
     } else {
-        // oculta las gestiones de flashcards
+        // hide customizeFlashcard element
         $customizeFlashcard.classList.add("hide");
-        // muestra el aviso de que no hay flashcard
+        // if did not select a topic element 
         $main.innerHTML = `
                     <div class="not-found">
                         <span><ion-icon name="search-outline"></ion-icon></span>
@@ -214,13 +245,17 @@ function getFlashcards() {
                     </div>`;
     }
 }
-// traer temarios
+// get topics
 function showTopics() {
+    // call peticion method
     peticion("getTopics").then(data => {
         if (data.status) {
+            // create a list_topics elemtnt
             let topics = `<ul class="list_topics">`
+            // convert data in array
             const arr = [...data.data];
             for (const key of arr) {
+                // create topics elements
                 topics += `
                 <li class="topic" data-id=${key.id}>
                   <span>${key.tema}</span>
@@ -230,9 +265,11 @@ function showTopics() {
                 </li>`;
             }
             topics += `</ul>`;
+            // add data to the containerTopics element
             $containerTopics.innerHTML = topics;
             eventoTopics();
         } else {
+            // if there aren´t topics elements 
             $containerTopics.innerHTML = `
             <div class="not-found">
             <span><ion-icon name="search-outline"></ion-icon></span>
@@ -241,12 +278,15 @@ function showTopics() {
         }
     }).catch()
 }
-// Events
+/* *** EVENTS *** */
+// onload element
 window.onload = () => {
+    // get topics
     showTopics();
+    // get flashcards
     getFlashcards();
 }
-
+// modal topic event
 $openModalTopic.addEventListener("click", (e) => {
     e.preventDefault();
     $overlay.classList.add("visible")
@@ -254,16 +294,19 @@ $openModalTopic.addEventListener("click", (e) => {
     $formTopic.classList.remove("hidden");
 
 })
+// form topic event
 $formTopic.addEventListener("submit", (e) => {
     e.preventDefault();
     let dataTopic = new FormData($formTopic);
     let validacion = true;
+    // validate inputs
     dataTopic.forEach(el => {
         if (el.trim() === "") {
             validacion = false;
         }
     })
     if (validacion) {
+        // call peticion method to send topic element
         peticion("addTopic", dataTopic).then(data => {
             if (data.status) {
                 showTopics();
@@ -274,24 +317,29 @@ $formTopic.addEventListener("submit", (e) => {
         alert("llene todos los campos")
     }
 })
+// modal flashcard event
 $openModalFlashcard.addEventListener("click", (e) => {
     e.preventDefault();
     $overlay.classList.add("visible")
     $titleModal.textContent = "agregar flashcard";
     $formFlashcard.classList.remove("hidden");
 })
+// close modal event
 $closeModal.addEventListener("click", (e) => {
     e.preventDefault();
     $formTopic.classList.add("hidden");
     $formFlashcard.classList.add("hidden");
     $overlay.classList.remove("visible")
 })
+// form flashcard event
 $formFlashcard.addEventListener("submit", (e) => {
     e.preventDefault();
     let dataFlahscard = new FormData($formFlashcard);
     dataFlahscard.append("id_temario", localStorage.getItem("id"))
+    // call peticion method
     peticion("addFlashcard", dataFlahscard).then(data => {
         if (data.status) {
+            // refresh flashcards
             getFlashcards();
         } else {
             alert("mal")
