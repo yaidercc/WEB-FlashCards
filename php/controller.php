@@ -11,11 +11,11 @@ class Controller{
     public function Signin($username,$email,$clave){
         return $this->model->signin($username,$email,$clave);
     }
-    public function getTopics(){
-        return $this->model->Topics();
+    public function getTopics($like){
+        return $this->model->Topics($like);
     }
-    public function getFlashcards($id){
-        return $this->model->Flashcards($id);
+    public function getFlashcards($id,$like){
+        return $this->model->Flashcards($id,$like);
     }
     public function deleteFlashcard($id){
         return $this->model->deleteFlashcard($id);

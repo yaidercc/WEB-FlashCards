@@ -69,6 +69,7 @@
               <div class="input_search" data-search="temarios">
                 <input
                   type="search"
+                  id="search_topics"
                   name="search"
                   placeholder="Buscar temarios"
                 />
@@ -98,6 +99,7 @@
           <input
             type="search"
             name="search"
+            id="search_flashcard"
             placeholder="Buscar flashcards"
             data-search="flashcards"
           />
@@ -200,6 +202,35 @@
             <div class="input input_modal">
               <label for="answer">elija un color</label>
               <input type="color" class="input_color" name="color"/>
+            </div>
+            <div class="btn_submit">
+              <ion-icon name="save"></ion-icon>
+              <input type="submit" value="guardar" />
+            </div>
+          </form>
+          <!-- change flashcard -->
+          <form action="#" class="hidden form" id="form_change_flashcards">
+            <div class="input input_modal">
+              <label for="question">ingrese la pregunta</label>
+              <input
+              name="anverso"
+                type="text"
+                id="question_change"
+                placeholder="EJ: Planeta Mas Grande Del Sistema Solar"
+              />
+            </div>
+            <div class="input input_modal">
+              <label for="answer">ingrese la respuesta</label>
+              <textarea
+              name="reverso"
+                type="text"
+                id="answer_change"
+                placeholder="EJ: jupiter"
+              ></textarea>
+            </div>
+            <div class="input input_modal">
+              <label for="answer">elija un color</label>
+              <input type="color" class="input_color" name="color" id="color_change"/>
             </div>
             <div class="btn_submit">
               <ion-icon name="save"></ion-icon>

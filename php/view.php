@@ -19,10 +19,10 @@ switch ($_POST["method"]) {
         }
         break;
     case 'getTopics':
-        echo json_encode($controller->getTopics());
+        echo json_encode($controller->getTopics($_POST["like"]));
         break;
     case 'getFlashcards':
-        echo json_encode($controller->getFlashcards($_POST["id"]));
+        echo json_encode($controller->getFlashcards($_POST["id"],$_POST["like"]));
         break;
     case 'deleteFlashcard':
         echo json_encode($controller->deleteFlashcard($_POST["id"]));

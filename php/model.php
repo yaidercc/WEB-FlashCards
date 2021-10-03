@@ -36,8 +36,8 @@ class model {
         }
         
     }
-    function Topics(){
-        $query= "SELECT * FROM `tema` WHERE  `id_usuario`=  $_SESSION[id_user] and estado=1";
+    function Topics($like){
+        $query= "SELECT * FROM `tema` WHERE  `id_usuario`=  $_SESSION[id_user] and estado=1 and tema like '%$like%'";
         $sql=$this->con->prepare($query);
         $sql->execute();
         if($sql->rowCount()>0){
@@ -46,12 +46,11 @@ class model {
             return array("status"=>false);
         }
     }
-    function Flashcards($id){
-        $query= "SELECT * FROM flashcard WHERE id_tema_fk=$id";
+    function Flashcards($id,$like){
+        $query= "SELECT * FROM flashcard WHERE id_tema_fk=$id and anverso like '%$like%'";
         $sql=$this->con->prepare($query);
         $sql->execute();
         if($sql->rowCount()>0){
-            
             return array("status"=>true,"data"=>$sql->fetchAll());
         }else{
             return array("status"=>false);
