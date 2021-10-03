@@ -92,6 +92,7 @@ function rotateFlashcards() {
     })
 }
 
+
 function eventoDeleteTopic() {
     const $deleteTopic = document.getElementById("delete_topic");
     $deleteTopic.addEventListener("click", (e) => {
@@ -100,10 +101,30 @@ function eventoDeleteTopic() {
         dataFlahscard.append("id_temario", localStorage.getItem("id"))
         peticion("deleteTopic", dataFlahscard).then(data => {
             if (data.status) {
-                localStorage.clear();
-                $tituloTopic.textContent = "";
-                showTopics();
-                getFlashcards()
+                Swal.fire({
+                    title: 'Deseas eliminar este temario?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.clear();
+                        $tituloTopic.textContent = "";
+                        showTopics();
+                        getFlashcards()
+                        Swal.fire({
+                            position: 'bottom-end',
+                            icon: 'success',
+                            title: 'Eliminado',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+
+                    }
+                })
 
             } else {
                 console.log(data.status)

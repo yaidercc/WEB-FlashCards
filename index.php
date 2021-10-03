@@ -26,6 +26,7 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script src="js/jquery-v1.min.js"></script>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/styles.css" />
@@ -207,7 +208,11 @@
           </form>
         </div>
       </div>
+      
     </div>
+    <div id="ohsnap"></div>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/ohsnap.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
