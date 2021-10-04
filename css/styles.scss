@@ -12,7 +12,10 @@ body {
 a {
     color: $blackColor;
 }
-
+label{
+    display: inline-block;
+    margin-bottom: .5rem;
+}
 ul {
     padding: 0;
 }
@@ -53,12 +56,35 @@ input:not(input[type="submit"]) {
     margin-left: auto;
     margin-right: auto;
 }
-
+.hide{
+    display: none!important;
+}
 .mg-top {
     margin-top: 4rem;
 }
-
-
+.input{
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    input {
+        width: 100%;
+    }
+    
+}
+.not-found{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 6rem 0;
+    color: rgb(155, 153, 153);
+    p{
+        margin-top: 1rem;
+    }
+    span{
+        font-size: 3rem;
+    }
+}
 .input_search {
     position: relative;
     width: 100%;
@@ -115,6 +141,7 @@ input:not(input[type="submit"]) {
 }
 
 .btn.btn_secundary {
+    margin-top: 2rem;
     color: $deleteColor;
     outline: 2px solid $deleteColor;
 
@@ -127,6 +154,12 @@ input:not(input[type="submit"]) {
 
 .hidden {
     display: none;
+}
+.good{
+    border: 2px solid #66BF6B;
+}
+.bad{
+    border: 2px solid #bf6666;
 }
 
 /* **** animations **** */
@@ -276,14 +309,14 @@ input:not(input[type="submit"]) {
 
 }
 
-
-
 .topics_container {
-    overflow-y: auto;
+    display: flex;
+    justify-content: center;
     height: 20rem;
-
+    overflow-y: auto;
     .list_topics {
         padding: 0;
+        width: 100%;
     }
 
     &.not-found {
@@ -299,7 +332,6 @@ input:not(input[type="submit"]) {
 .list_topics {
     li {
         display: flex;
-        align-items: center;
         justify-content: space-between;
         padding: 1.4rem 2rem;
         margin-bottom: .5rem;
@@ -365,7 +397,6 @@ input:not(input[type="submit"]) {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         .input_search {
             width: 25rem;
         }
@@ -483,7 +514,7 @@ input:not(input[type="submit"]) {
         justify-content: center;
     }
 
-    .btn_palette {
+    .btn_change {
         left: 0;
         background-color: $paletteColor;
     }
@@ -499,8 +530,7 @@ input:not(input[type="submit"]) {
 }
 
 .delete_topic {
-    margin-top: 2rem;
-
+   
     .btn_delete-topic {
         width: 100%;
     }
@@ -585,7 +615,7 @@ input:not(input[type="submit"]) {
     margin-top: 2rem;
 
     li {
-        margin-bottom: 3.5rem;
+        margin-top: 2rem;
 
         a {
             color: #fff;
@@ -671,12 +701,7 @@ input:not(input[type="submit"]) {
 
 .form {
     .input_modal {
-        margin-bottom: 2rem;
-
-        label {
-            display: block;
-            margin-bottom: 1rem;
-        }
+        
 
         textarea {
             height: 10rem;
@@ -709,4 +734,78 @@ input:not(input[type="submit"]) {
     .input_color {
         background-color: transparent;
     }
+}
+// login
+.container-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #eee;
+    .container-form{
+        border-radius: .4rem;
+        padding: 2rem 1.5rem;
+        background-color: #fff;
+        h2{
+            margin-bottom: 3rem;
+            text-transform: capitalize;
+            text-align: center;
+        }
+        
+    }
+}
+
+.text-sign-in{
+    margin-top: 2rem;
+    text-align: center;
+    .get-in{
+        color: $principalColor;
+    }
+}
+.validacion{
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    color: $principalColor;
+    font-weight: bold;
+    span{
+        margin-left: .5rem;
+    }
+    ion-icon{
+       font-size: 1.6rem;
+    }
+}
+
+/* alert styles */
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 0px;
+  right: 21px;
+  background-color: white;
+}
+
+.alert-red {
+  color: white;
+  background-color: #DA4453;
+}
+.alert-green {
+  color: white;
+  background-color: #37BC9B;
+}
+.alert-blue {
+  color: white;
+  background-color: #4A89DC;
+}
+.alert-yellow {
+  color: white;
+  background-color: #F6BB42;
+}
+.alert-orange {
+  color:white;
+  background-color: #E9573F;
 }
