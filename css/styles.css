@@ -573,6 +573,7 @@ input:not(input[type=submit]) {
   }
   .info li {
     height: initial;
+    margin: 0;
     margin-right: 2rem;
   }
 }

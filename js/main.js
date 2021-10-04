@@ -17,6 +17,7 @@ const $searchFlaschard = document.getElementById("search_flashcard");
 const $searchTopics = document.getElementById("search_topics");
 const $formChangeFlashcard = document.getElementById("form_change_flashcards");
 const $formsModal = Array.from(document.getElementsByClassName("form"))
+const $leaveBtn = document.getElementById("leave");
 /* *** FUNCTIONS *** */
 
 // Requests to the bd
@@ -60,6 +61,7 @@ function eventoTopics() {
             // add the name and the id to localstorage
             localStorage.setItem("topic", Array.from(el.childNodes)[1].textContent)
             localStorage.setItem("id", el.getAttribute("data-id"))
+            localStorage.setItem("id_user", document.getElementById("id_user").value)
             // remove class active
             topics.forEach((ele) => {
                 ele.classList.remove("active");
@@ -217,7 +219,7 @@ function eventoDeleteTopic() {
 // get flashcards
 function getFlashcards(like = "") {
     // validates if id element exists
-    if (localStorage.getItem("id")) {
+    if (localStorage.getItem("id") && localStorage.getItem("id_user") == document.getElementById("id_user").value) {
         // set title 
         $tituloTopic.textContent = localStorage.getItem("topic");
         // creates new formdata
